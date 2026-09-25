@@ -117,7 +117,7 @@ export const en = {
     books: "Books",
     patio: "Patio",
     privateEntrance: "Private entrance",
-    parking: "Free parking",
+    parking: "Free parking lot",
     stepFree: "Step-free access",
     pets: "Pets allowed (fee)",
     nonSmoking: "Non-smoking",
@@ -135,19 +135,19 @@ export const en = {
       name: "Classic Studio",
       tagline: "Sofa, sitting area and kitchenette",
       description:
-        "A bright studio with a comfortable bed, a sofa and coffee table, a TV and a kitchenette with sink, microwave and coffee maker. Step outside to the covered front porch.",
+        "A bright studio with a comfortable bed, a sofa and coffee table, a Smart TV and a kitchenette with sink, microwave and coffee maker. Step outside to the covered front porch.",
     },
     "studio-3": {
       name: "Rustic Studio",
       tagline: "Wood-panel walls and a log-frame bed",
       description:
-        "Wood-panel walls, a log-frame bed, a ceiling fan and a cozy armchair give this studio a warm, cabin-like feel. The kitchenette has a microwave, coffee maker and toaster.",
+        "Wood-panel walls, a log-frame bed, a ceiling fan and a cozy armchair give this studio a warm, cabin-like feel, with a Smart TV for movie nights. The kitchenette has a microwave, coffee maker and toaster.",
     },
     "studio-4": {
       name: "Workspace Studio",
       tagline: "Work desk, refrigerator and private patio",
       description:
-        "A clean, modern studio with a work desk and office chair, a wall-mounted TV, a refrigerator, microwave and cooking basics — plus its own patio.",
+        "A clean, modern studio with a work desk and office chair, a wall-mounted Smart TV, a refrigerator, microwave and cooking basics — plus its own patio.",
     },
     "studio-8": {
       name: "Two-Bed Studio",
@@ -177,17 +177,17 @@ export const en = {
     trust: [
       { icon: "event_available", label: "Book Online" },
       { icon: "pets", label: "Pet-Friendly" },
-      { icon: "local_parking", label: "Free Parking" },
+      { icon: "local_parking", label: "Free Parking Lot" },
       { icon: "accessible", label: "Step-Free Access" },
       { icon: "storefront", label: "1 Mi to The Village" },
       { icon: "music_note", label: "5 Mi to Pine Knob" },
     ],
     introTitle: "Everything You Need, Close to Everything",
     introText:
-      "The Olde Mill Inn of Clarkston North is an independent inn on Dixie Highway with four private-entrance studios. Each has Wi-Fi, a kitchenette with microwave and coffee maker, and free parking right outside your door — whether you're here for a concert at Pine Knob, a weekend in The Village or a longer stay.",
+      "The Olde Mill Inn of Clarkston North is an independent inn on Dixie Highway with four private-entrance studios. Each has Wi-Fi, a Smart TV, air conditioning and heating, a kitchenette with microwave and coffee maker, and a free parking lot right outside your door — whether you're here for a concert at Pine Knob, a weekend in The Village or a longer stay.",
     studiosTitle: "Our Studios",
     studiosText: "Four studios for up to two guests. Pick one and book it online.",
-    amenitiesTitle: "In Every Studio",
+    amenitiesTitle: "Included With Every Stay",
     extTitle: "Planning an Extended Stay?",
     extText: "Rates depend on how long you're staying. Give us a call and we'll find the right option for you.",
     howItWorks: "How it works",

@@ -49,9 +49,11 @@ export const amenityMeta: Record<AmenityKey, { icon: string; group: "room" | "pr
 };
 
 // Marked for all four units. Microwave comes from the sheet's Guest Info
-// ("microwave and toaster provided"), which applies to every unit.
+// ("microwave and toaster provided"), which applies to every unit. Smart TV in
+// every studio confirmed by the owner on 2026-09-25 (sheet marks only Unit 8).
+// No cable TV and no wired LAN — confirmed by the owner; never list them.
 export const commonAmenities: AmenityKey[] = [
-  "ac", "heating", "wifi", "coffeeMaker", "microwave", "kitchenette", "toiletries", "hairDryer",
+  "ac", "heating", "wifi", "smartTv", "coffeeMaker", "microwave", "kitchenette", "toiletries", "hairDryer",
   "hangers", "linens", "towels", "trashBags", "parking", "privateEntrance", "stepFree", "pets",
   "nonSmoking", "children", "elderly", "coDetector", "fireExtinguisher", "firstAid",
 ];
@@ -118,12 +120,19 @@ export const rooms: Room[] = [
     bookingUrl: "https://www.vacasa.com/unit/1032259",
     amenities: [
       ...commonAmenities, "iron", "shampoo", "dishware", "toaster", "smokeDetector", "shower",
-      "cookingBasics", "books", "smartTv",
+      "cookingBasics", "books",
     ],
   },
 ];
 
 export const roomsBySlug = new Map(rooms.map((r) => [r.slug, r]));
+
+// What every studio includes, plus the free parking lot (a property feature
+// guests expect to see in the same list).
+export const includedEverywhere: AmenityKey[] = [
+  ...commonAmenities.filter((k) => amenityMeta[k].group === "room"),
+  "parking",
+];
 
 // Sorted room-first, then by the display order of amenityMeta.
 export function sortedAmenities(keys: AmenityKey[], group: "room" | "property"): AmenityKey[] {

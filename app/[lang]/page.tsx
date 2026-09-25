@@ -4,7 +4,7 @@ import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { AmenityGrid } from "@/components/AmenityGrid";
 import { RoomCard } from "@/components/RoomCard";
-import { rooms, commonAmenities, sortedAmenities } from "@/lib/rooms";
+import { rooms, includedEverywhere } from "@/lib/rooms";
 import { featured } from "@/lib/photos";
 import { property, directionsUrl, southLocation } from "@/lib/property";
 import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
@@ -102,7 +102,7 @@ export default function HomePage({ params }: Props) {
             <h2 className="font-headline-lg text-headline-lg text-primary mb-4">{h.amenitiesTitle}</h2>
             <div className="h-1 w-20 bg-sunset-accent mx-auto rounded-full" />
           </div>
-          <AmenityGrid keys={sortedAmenities(commonAmenities, "room")} labels={t.amenities} />
+          <AmenityGrid keys={includedEverywhere} labels={t.amenities} />
         </div>
       </section>
 

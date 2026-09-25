@@ -5,7 +5,7 @@ import { Icon } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
 import { AmenityGrid } from "@/components/AmenityGrid";
 import { property } from "@/lib/property";
-import { commonAmenities, sortedAmenities } from "@/lib/rooms";
+import { includedEverywhere } from "@/lib/rooms";
 import { featured } from "@/lib/photos";
 import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
 import { EVENTS } from "@/lib/analytics";
@@ -52,7 +52,7 @@ export default function ExtendedStayPage({ params }: Props) {
       <section className="py-section-gap bg-surface-container-low">
         <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
           <h2 className="font-headline-lg text-headline-lg text-primary mb-8">{e.includedTitle}</h2>
-          <AmenityGrid keys={sortedAmenities(commonAmenities, "room")} labels={t.amenities} />
+          <AmenityGrid keys={includedEverywhere} labels={t.amenities} />
         </div>
       </section>
 

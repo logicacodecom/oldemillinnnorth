@@ -116,7 +116,7 @@ export const es: Dict = {
     books: "Libros",
     patio: "Patio",
     privateEntrance: "Entrada privada",
-    parking: "Estacionamiento gratuito",
+    parking: "Estacionamiento gratuito en el lugar",
     stepFree: "Acceso sin escalones",
     pets: "Se aceptan mascotas (con cargo)",
     nonSmoking: "No fumar",
@@ -134,19 +134,19 @@ export const es: Dict = {
       name: "Estudio clásico",
       tagline: "Sofá, área de estar y cocineta",
       description:
-        "Un estudio luminoso con una cama cómoda, sofá y mesa de centro, televisor y una cocineta con fregadero, microondas y cafetera. Afuera lo espera el porche techado de la entrada.",
+        "Un estudio luminoso con una cama cómoda, sofá y mesa de centro, Smart TV y una cocineta con fregadero, microondas y cafetera. Afuera lo espera el porche techado de la entrada.",
     },
     "studio-3": {
       name: "Estudio rústico",
       tagline: "Paredes de madera y cama de troncos",
       description:
-        "Paredes revestidas de madera, una cama de troncos, ventilador de techo y un sillón acogedor le dan a este estudio un ambiente cálido, como de cabaña. La cocineta tiene microondas, cafetera y tostador.",
+        "Paredes revestidas de madera, una cama de troncos, ventilador de techo y un sillón acogedor le dan a este estudio un ambiente cálido, como de cabaña, con Smart TV para sus noches de película. La cocineta tiene microondas, cafetera y tostador.",
     },
     "studio-4": {
       name: "Estudio con escritorio",
       tagline: "Escritorio, refrigerador y patio privado",
       description:
-        "Un estudio limpio y moderno con escritorio y silla de oficina, televisor de pared, refrigerador, microondas y utensilios básicos de cocina, además de su propio patio.",
+        "Un estudio limpio y moderno con escritorio y silla de oficina, Smart TV de pared, refrigerador, microondas y utensilios básicos de cocina, además de su propio patio.",
     },
     "studio-8": {
       name: "Estudio con dos camas",
@@ -176,17 +176,17 @@ export const es: Dict = {
     trust: [
       { icon: "event_available", label: "Reserve en línea" },
       { icon: "pets", label: "Se aceptan mascotas" },
-      { icon: "local_parking", label: "Estacionamiento gratis" },
+      { icon: "local_parking", label: "Estacionamiento gratuito" },
       { icon: "accessible", label: "Acceso sin escalones" },
       { icon: "storefront", label: "1 mi de The Village" },
       { icon: "music_note", label: "5 mi de Pine Knob" },
     ],
     introTitle: "Todo lo que necesita, cerca de todo",
     introText:
-      "The Olde Mill Inn of Clarkston North es un hotel independiente en Dixie Highway con cuatro estudios de entrada privada. Cada uno tiene Wi-Fi, cocineta con microondas y cafetera, y estacionamiento gratuito frente a su puerta, ya sea que venga a un concierto en Pine Knob, a pasar un fin de semana en The Village o por una estadía más larga.",
+      "The Olde Mill Inn of Clarkston North es un hotel independiente en Dixie Highway con cuatro estudios de entrada privada. Cada uno tiene Wi-Fi, Smart TV, aire acondicionado y calefacción, cocineta con microondas y cafetera, y estacionamiento gratuito justo frente a su puerta, ya sea que venga a un concierto en Pine Knob, a pasar un fin de semana en The Village o por una estadía más larga.",
     studiosTitle: "Nuestros estudios",
     studiosText: "Cuatro estudios para hasta dos huéspedes. Elija uno y resérvelo en línea.",
-    amenitiesTitle: "En todos los estudios",
+    amenitiesTitle: "Incluido en cada estadía",
     extTitle: "¿Planea una estadía prolongada?",
     extText: "Las tarifas dependen de la duración de su estadía. Llámenos y encontraremos la mejor opción para usted.",
     howItWorks: "Cómo funciona",
