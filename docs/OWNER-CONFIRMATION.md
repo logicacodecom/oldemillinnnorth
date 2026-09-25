@@ -6,7 +6,7 @@ Decided:
 - **Booking:** nightly stays are booked online through each studio's public Vacasa listing. Extended stays are by phone. No prices are shown on the site.
 - **Contact:** the site keeps (248) 625-1522 and ClarkstonHotel@gmail.com. The Evolve guest contact is Walid, (248) 343-2419, oldmillinn@icloud.com; the owner may switch to it later.
 - **Photos:** all Evolve listing photos are used (79 distinct, at 2048px).
-- **Owner-confirmed on 2026-09-25:** every studio has a Smart TV, air conditioning and heating, and there's a free parking lot. There's **no cable TV and no wired (LAN) internet**, so never list them.
+- **Owner-confirmed on 2026-09-25:** every studio has a Smart TV and in-room air conditioning and heating (not central), and there's a free parking lot. There's **no cable TV and no wired (LAN) internet**, so never list them.
 - **Reviews:** the 3 reviews from the old Wix site stay. Evolve/OTA ratings aren't shown.
 
 Sheet data worth a second look (the site shows only what the sheet marks):

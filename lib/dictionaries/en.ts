@@ -94,8 +94,8 @@ export const en = {
   },
 
   amenities: {
-    ac: "Central air conditioning",
-    heating: "Central heating",
+    ac: "Air conditioning",
+    heating: "Heating",
     wifi: "Wi-Fi",
     smartTv: "Smart TV",
     coffeeMaker: "Coffee maker",

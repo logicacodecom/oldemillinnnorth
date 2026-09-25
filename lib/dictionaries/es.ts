@@ -93,8 +93,8 @@ export const es: Dict = {
   },
 
   amenities: {
-    ac: "Aire acondicionado central",
-    heating: "Calefacción central",
+    ac: "Aire acondicionado",
+    heating: "Calefacción",
     wifi: "Wi-Fi",
     smartTv: "Smart TV",
     coffeeMaker: "Cafetera",
