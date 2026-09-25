@@ -1,15 +1,20 @@
 import { property, siteUrl } from "@/lib/property";
+import { commonAmenities } from "@/lib/rooms";
 import { en } from "@/lib/dictionaries/en";
 
-// Accurate JSON-LD. Only verified data — no aggregateRating, reviews, star
-// rating, prices, check-in times or pet policy until confirmed.
+// Accurate JSON-LD from the owner's listings sheet. No aggregateRating,
+// reviews, star rating or prices.
 export function lodgingJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
     name: property.name,
     url: siteUrl,
-    image: [`${siteUrl}/images/room.jpg`],
+    image: [
+      `${siteUrl}/images/exterior/01.jpg`,
+      `${siteUrl}/images/studio-3/01.jpg`,
+      `${siteUrl}/images/studio-8/01.jpg`,
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: property.address.street,
@@ -20,12 +25,15 @@ export function lodgingJsonLd() {
     },
     telephone: property.phone.href.replace("tel:", ""),
     email: property.email,
-    description:
-      "Independent, family-operated extended-stay lodging on Dixie Highway in Clarkston, Michigan.",
+    checkinTime: property.checkInTime24,
+    checkoutTime: property.checkOutTime24,
+    petsAllowed: true,
     availableLanguage: ["English", "Spanish"],
-    amenityFeature: en.amenities.map((a) => ({
+    description:
+      "Independent, pet-friendly studios on Dixie Highway in Clarkston, Michigan, about a mile from The Village and five miles from Pine Knob.",
+    amenityFeature: commonAmenities.map((k) => ({
       "@type": "LocationFeatureSpecification",
-      name: a.label,
+      name: en.amenities[k],
       value: true,
     })),
   };

@@ -5,6 +5,7 @@ import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { property, addressLine, directionsUrl, southLocation } from "@/lib/property";
 import { getDict, pageMetadata, type Lang } from "@/lib/i18n";
+import { featured } from "@/lib/photos";
 import { EVENTS } from "@/lib/analytics";
 
 type Props = { params: { lang: Lang } };
@@ -18,7 +19,7 @@ export default function ContactPage({ params }: Props) {
   const c = t.contact;
   return (
     <>
-      <PageHero eyebrow={c.eyebrow} title={c.title} />
+      <PageHero eyebrow={c.eyebrow} title={c.title} image={featured.contactHero} imageAlt={c.heroAlt} />
 
       <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div>

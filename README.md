@@ -21,18 +21,23 @@ npm run typecheck  # tsc --noEmit
 ## Structure
 
 ```
-app/            Routes: home, extended-stay, room, things-to-do, contact,
-                privacy, accessibility, api/contact, sitemap.ts, robots.ts
+app/[lang]/     Pages (English at /, Spanish at /es): home, rooms, rooms/[slug],
+                extended-stay, gallery, things-to-do, contact, privacy, accessibility
+app/api/        contact (inquiry email)
 components/     UI shared with the South site (Header, Footer, CTA, PageHero,
-                ContactForm, MobileActionBar, AmenityGrid, …)
-lib/            property.ts (all business data), faqs, attractions, nav, analytics
-public/images/  logo.png (North badge), room.jpg
-assets/brand/   Source images pulled from the previous Wix site
+                GalleryGrid, RoomCard, AmenityGrid, ContactForm, …)
+lib/            property.ts (business data + policies), rooms.ts (4 studios,
+                amenities, Vacasa booking links), photos.ts, dictionaries/{en,es}.ts
+public/images/  logo.png, exterior/, lobby/, studio-1|3|4|8/ (2048px listing photos)
 ```
+
+Source of truth for rooms, amenities, policies, distances and photos: the
+owner's Google Sheet **Evolve_Listings_6853_Dixie_Hwy**. Nightly stays book
+online through each studio's public Vacasa listing; extended stays by phone.
 
 ## Languages (English / Spanish)
 
-English is served at the root (`/room`) and Spanish under `/es` (`/es/room`).
+English is served at the root (`/rooms`) and Spanish under `/es` (`/es/rooms`).
 All pages live once in `app/[lang]/`, and `middleware.ts` rewrites unprefixed URLs
 to the internal `/en` segment (`/en/*` redirects back to the root). All copy
 lives in `lib/dictionaries/en.ts` and `es.ts`. `es.ts` is typed against
@@ -40,9 +45,6 @@ lives in `lib/dictionaries/en.ts` and `es.ts`. `es.ts` is typed against
 (`components/LanguageToggle.tsx`) links to the same page in the other language.
 Guest reviews stay in their original English. Run `node lib/i18n.check.mjs` to
 check the path helpers.
-
-There is **no online booking** for this location. Every call to action is
-"call to book" or the inquiry form. Nightly-stay guests go to the South site.
 
 ## Configuration
 

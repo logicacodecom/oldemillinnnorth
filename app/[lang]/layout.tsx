@@ -57,13 +57,13 @@ export function generateMetadata({ params }: { params: { lang: Lang } }): Metada
       url: `${siteUrl}${localePath(params.lang, "/")}`,
       title: t.meta.defaultTitle,
       description: t.meta.ogDescription,
-      images: [{ url: "/images/room.jpg", width: 1080, height: 1080, alt: property.name }],
+      images: [{ url: "/images/studio-3/01.jpg", width: 2048, height: 1365, alt: property.name }],
     },
     twitter: {
       card: "summary_large_image",
       title: "Olde Mill Inn of Clarkston North",
       description: t.meta.twitterDescription,
-      images: ["/images/room.jpg"],
+      images: ["/images/studio-3/01.jpg"],
     },
     robots: { index: true, follow: true },
   };

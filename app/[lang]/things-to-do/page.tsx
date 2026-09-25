@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { Icon } from "@/components/Icon";
 import { getDict, pageMetadata, type Lang } from "@/lib/i18n";
+import { featured } from "@/lib/photos";
 
 type Props = { params: { lang: Lang } };
 
@@ -10,10 +11,12 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 const sectionIcons = {
+  local: "storefront",
   concerts: "music_note",
   skiing: "downhill_skiing",
+  outdoors: "park",
   shopping: "shopping_bag",
-  local: "restaurant",
+  travel: "flight",
 } as const;
 
 function directionsTo(query: string) {
@@ -32,7 +35,7 @@ export default function ThingsToDoPage({ params }: Props) {
 
   return (
     <>
-      <PageHero eyebrow={p.eyebrow} title={p.title} subtitle={p.subtitle} />
+      <PageHero eyebrow={p.eyebrow} title={p.title} subtitle={p.subtitle} image={featured.thingsToDoHero} imageAlt={p.heroAlt} />
 
       <div className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop space-y-16">
         {sections.map((section) => (
@@ -46,7 +49,12 @@ export default function ThingsToDoPage({ params }: Props) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
               {section.items.map((a) => (
                 <div key={a.name} className="bg-surface-white rounded-xl p-6 border border-outline-variant/10 flex flex-col">
-                  <h3 className="font-headline-md text-lg text-on-surface mb-2">{a.name}</h3>
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h3 className="font-headline-md text-lg text-on-surface">{a.name}</h3>
+                    {a.approxMiles ? (
+                      <span className="text-sm text-on-surface-variant whitespace-nowrap">{t.roomFacts.miles(a.approxMiles)}</span>
+                    ) : null}
+                  </div>
                   <p className="text-on-surface-variant text-sm mb-4 flex-1">{a.description}</p>
                   {a.address ? <p className="text-xs text-on-surface-variant mb-4">{a.address}</p> : null}
                   <a

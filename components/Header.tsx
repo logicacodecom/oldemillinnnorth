@@ -106,17 +106,17 @@ export function Header({
             toggle={toggle}
             className={`font-label-lg text-label-lg hover:text-sunset-accent ${light ? "text-surface-white" : "text-on-surface"}`}
           />
-          <a
-            href={property.phone.href}
-            data-analytics-event={EVENTS.phoneClick}
+          <Link
+            href={localePath(lang, "/rooms")}
+            data-analytics-event={EVENTS.bookingClick}
             className={`px-6 py-2.5 rounded-full font-label-lg text-label-lg transition-colors active:scale-95 ${
               light
-                ? "bg-sunset-accent text-primary hover:bg-surface-white" // visible over the navy home hero
+                ? "bg-sunset-accent text-primary hover:bg-surface-white" // visible over the home hero photo
                 : "bg-primary text-on-primary hover:bg-primary-container"
             }`}
           >
-            {common.callToBook}
-          </a>
+            {common.bookOnline}
+          </Link>
         </nav>
 
         <div className="xl:hidden flex items-center gap-1">
@@ -161,10 +161,18 @@ export function Header({
             toggle={toggle}
             className="font-headline-md text-headline-md text-on-surface py-4 border-b border-outline-variant/30"
           />
+          <Link
+            href={localePath(lang, "/rooms")}
+            onClick={() => setMenuOpen(false)}
+            data-analytics-event={EVENTS.bookingClick}
+            className="mt-6 text-center bg-primary text-on-primary px-6 py-4 rounded-full font-label-lg text-label-lg"
+          >
+            {common.bookOnline}
+          </Link>
           <a
             href={property.phone.href}
             data-analytics-event={EVENTS.phoneClick}
-            className="mt-6 text-center bg-primary text-on-primary px-6 py-4 rounded-full font-label-lg text-label-lg"
+            className="mt-3 text-center border border-primary text-primary px-6 py-4 rounded-full font-label-lg text-label-lg"
           >
             {common.callNumber}
           </a>

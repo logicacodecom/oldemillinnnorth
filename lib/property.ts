@@ -20,6 +20,16 @@ export const property = {
     href: "tel:+12486251522",
   },
   email: process.env.NEXT_PUBLIC_PROPERTY_EMAIL ?? "ClarkstonHotel@gmail.com",
+  // Policies from the owner's Evolve listings sheet (Guest Info tab).
+  checkIn: "3:00 PM",
+  checkOut: "11:00 AM",
+  checkInTime24: "15:00",
+  checkOutTime24: "11:00",
+  petFee: "$50",
+  parkingSpaces: 2,
+  // Approximate distances from the sheet, in miles.
+  milesToVillage: 1,
+  milesToPineKnob: 5,
   // Owner-approved guest reviews carried over from the previous North site.
   // Shown in the original English on both language versions.
   reviews: [

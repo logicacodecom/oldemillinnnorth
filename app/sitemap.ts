@@ -1,8 +1,19 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/property";
 import { langs, localePath } from "@/lib/i18n";
+import { rooms } from "@/lib/rooms";
 
-const paths = ["/", "/extended-stay", "/room", "/things-to-do", "/contact", "/privacy", "/accessibility"];
+const paths = [
+  "/",
+  "/rooms",
+  ...rooms.map((r) => `/rooms/${r.slug}`),
+  "/extended-stay",
+  "/gallery",
+  "/things-to-do",
+  "/contact",
+  "/privacy",
+  "/accessibility",
+];
 
 // Every page in both languages, each listing its hreflang alternates.
 export default function sitemap(): MetadataRoute.Sitemap {

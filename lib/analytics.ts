@@ -3,6 +3,7 @@
 // No analytics provider ID is hardcoded; wire one with NEXT_PUBLIC_GA_ID.
 
 export const EVENTS = {
+  bookingClick: "booking_click",
   phoneClick: "phone_click",
   directionsClick: "directions_click",
   southSiteClick: "south_site_click",

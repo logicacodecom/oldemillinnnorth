@@ -1,6 +1,8 @@
 import { property, southLocation } from "../property";
+import type { AmenityKey, Room } from "../rooms";
 
 // All English copy. es.ts must match this shape (typed as Dict).
+// Facts come from the owner's Evolve listings sheet (source of truth).
 export const en = {
   htmlLang: "en",
   ogLocale: "en_US",
@@ -9,31 +11,35 @@ export const en = {
   skip: "Skip to content",
 
   meta: {
-    defaultTitle: "Extended Stay Hotel in Clarkston, MI | Olde Mill Inn North",
+    defaultTitle: "Pet-Friendly Studios in Clarkston, MI | Olde Mill Inn North",
     titleTemplate: "%s | Olde Mill Inn North",
     description:
-      "Extended stays at The Olde Mill Inn of Clarkston North, 6853 Dixie Hwy. Wi-Fi, Smart TV, kitchen basics and on-site laundry. Call to book.",
-    ogDescription: "Comfortable extended stays on Dixie Highway in Clarkston, Michigan. Call to book.",
+      "Pet-friendly studios at The Olde Mill Inn of Clarkston North, 6853 Dixie Hwy — 1 mile from The Village and 5 miles from Pine Knob. Book nightly stays online; call for extended stays.",
+    ogDescription: "Pet-friendly studios 1 mile from The Village and 5 miles from Pine Knob. Book online or call for extended stays.",
     twitterDescription: "Your home away from home in Clarkston, Michigan.",
+    rooms: {
+      title: "Studios",
+      description:
+        "Four pet-friendly studios at The Olde Mill Inn of Clarkston North, each with Wi-Fi, a kitchenette with microwave and coffee maker, and free parking. Book online.",
+    },
+    gallery: {
+      title: "Photo Gallery",
+      description: "Photos of the studios, lobby and grounds at The Olde Mill Inn of Clarkston North.",
+    },
     extendedStay: {
       title: "Extended Stay in Clarkston, MI",
       description:
-        "Extended-stay lodging at The Olde Mill Inn of Clarkston North. Wi-Fi, Smart TV, refrigerator, microwave and on-site laundry. Call for pricing.",
-    },
-    room: {
-      title: "The Room",
-      description:
-        "Spacious extended-stay rooms at The Olde Mill Inn of Clarkston North with Wi-Fi, Smart TV, refrigerator, microwave, coffee maker and air-conditioning.",
+        "Extended stays at The Olde Mill Inn of Clarkston North: pet-friendly studios with Wi-Fi, kitchenette and free parking. Call for pricing.",
     },
     thingsToDo: {
       title: "Things to Do Near Clarkston, MI",
       description:
-        "Concerts at Pine Knob, nearby skiing, shopping at Great Lakes Crossing and downtown Clarkston — all a short drive from Olde Mill Inn North.",
+        "The Village of Clarkston 1 mile away, Pine Knob 5 miles, Deer Lake Beach, Independence Oaks and more near Olde Mill Inn North.",
     },
     contact: {
       title: "Contact & Directions",
       description:
-        "Contact The Olde Mill Inn of Clarkston North at 6853 Dixie Hwy for extended-stay pricing, availability and directions.",
+        "Contact The Olde Mill Inn of Clarkston North at 6853 Dixie Hwy for bookings, extended-stay pricing and directions.",
     },
     privacy: {
       title: "Privacy",
@@ -47,8 +53,9 @@ export const en = {
 
   nav: {
     main: [
+      { label: "Studios", href: "/rooms" },
       { label: "Extended Stay", href: "/extended-stay" },
-      { label: "The Room", href: "/room" },
+      { label: "Gallery", href: "/gallery" },
       { label: "Things to Do", href: "/things-to-do" },
       { label: "Contact", href: "/contact" },
     ],
@@ -64,6 +71,8 @@ export const en = {
   },
 
   common: {
+    bookOnline: "Book Online",
+    viewStudios: "View Studios",
     callToBook: "Call to Book",
     call: "Call",
     callNumber: `Call ${property.phone.display}`,
@@ -71,77 +80,184 @@ export const en = {
     getDirections: "Get Directions",
     callForPricing: "Call for Pricing",
     directions: "Directions",
-    roomAlt: "Guest room at The Olde Mill Inn of Clarkston North with a bed, sofa and coffee table",
   },
 
-  mobileBar: { aria: "Quick actions", call: "Call", directions: "Directions", inquire: "Inquire" },
+  mobileBar: { aria: "Quick actions", call: "Call", directions: "Directions", book: "Book" },
 
   footer: {
-    tagline: "Independent, family-operated extended-stay lodging on Dixie Highway in Clarkston, Michigan.",
+    tagline: "Independent, pet-friendly studios on Dixie Highway in Clarkston, Michigan.",
     explore: "Explore",
     contact: "Contact",
     plan: "Plan",
-    nightly: `Nightly stays: ${southLocation.short}`,
+    southLink: `Lakefront stays: ${southLocation.short}`,
     credit: "Website delivered by our technology partner,",
   },
 
-  amenities: [
-    { icon: "wifi", label: "Wireless internet (Wi-Fi)" },
-    { icon: "lan", label: "Wired (LAN) internet" },
-    { icon: "tv", label: "Smart TV" },
-    { icon: "live_tv", label: "Cable television" },
-    { icon: "kitchen", label: "Refrigerator" },
-    { icon: "microwave", label: "Microwave" },
-    { icon: "coffee_maker", label: "Coffee maker" },
-    { icon: "ac_unit", label: "Air-conditioning" },
-    { icon: "local_laundry_service", label: "On-site laundry facility" },
-  ],
+  amenities: {
+    ac: "Central air conditioning",
+    heating: "Central heating",
+    wifi: "Wi-Fi",
+    smartTv: "Smart TV",
+    coffeeMaker: "Coffee maker",
+    microwave: "Microwave",
+    refrigerator: "Refrigerator",
+    toaster: "Toaster",
+    kitchenette: "Kitchenette (no stove or oven)",
+    cookingBasics: "Cooking basics",
+    dishware: "Dishware & flatware",
+    shower: "Shower",
+    toiletries: "Complimentary toiletries",
+    shampoo: "Shampoo",
+    hairDryer: "Hair dryer",
+    towels: "Towels provided",
+    linens: "Linens provided",
+    hangers: "Hangers",
+    iron: "Iron & ironing board",
+    trashBags: "Trash bags & paper towels",
+    books: "Books",
+    patio: "Patio",
+    privateEntrance: "Private entrance",
+    parking: "Free parking",
+    stepFree: "Step-free access",
+    pets: "Pets allowed (fee)",
+    nonSmoking: "Non-smoking",
+    children: "Suitable for children",
+    elderly: "Suitable for older guests",
+    smokeDetector: "Smoke detector",
+    coDetector: "Carbon monoxide detector",
+    fireExtinguisher: "Fire extinguisher",
+    firstAid: "First aid kit",
+  } satisfies Record<AmenityKey, string>,
+  amenityGroups: { room: "In the studio", property: "Property & safety" },
+
+  rooms: {
+    "studio-1": {
+      name: "Classic Studio",
+      tagline: "Sofa, sitting area and kitchenette",
+      description:
+        "A bright studio with a comfortable bed, a sofa and coffee table, a TV and a kitchenette with sink, microwave and coffee maker. Step outside to the covered front porch.",
+    },
+    "studio-3": {
+      name: "Rustic Studio",
+      tagline: "Wood-panel walls and a log-frame bed",
+      description:
+        "Wood-panel walls, a log-frame bed, a ceiling fan and a cozy armchair give this studio a warm, cabin-like feel. The kitchenette has a microwave, coffee maker and toaster.",
+    },
+    "studio-4": {
+      name: "Workspace Studio",
+      tagline: "Work desk, refrigerator and private patio",
+      description:
+        "A clean, modern studio with a work desk and office chair, a wall-mounted TV, a refrigerator, microwave and cooking basics — plus its own patio.",
+    },
+    "studio-8": {
+      name: "Two-Bed Studio",
+      tagline: "Two beds and a Smart TV",
+      description:
+        "Two beds, a Smart TV and a kitchenette with microwave, toaster and a Keurig with complimentary coffee — a good fit for two travelers who'd rather not share a bed.",
+    },
+  } satisfies Record<Room["slug"], { name: string; tagline: string; description: string }>,
+
+  roomFacts: {
+    unit: (n: number) => `Unit ${n}`,
+    sleeps: (n: number) => `Sleeps ${n}`,
+    beds: (n: number) => (n === 1 ? "1 bed" : `${n} beds`),
+    baths: (n: number) => (n === 1 ? "1 bathroom" : `${n} bathrooms`),
+    sqft: (n: number) => `${n} sq ft`,
+    miles: (n: number) => `≈${n} mi`,
+    photoAlt: (name: string) => `${name} at The Olde Mill Inn of Clarkston North`,
+  },
 
   home: {
-    eyebrow: "Extended stays in Clarkston, Michigan",
+    eyebrow: "Pet-friendly studios in Clarkston, Michigan",
     heroTitle: "Your Home Away From Home in Clarkston",
     heroText:
-      "Comfortable rooms and attentive service for guests who need to stay a while, with Wi-Fi, a Smart TV, kitchen basics and on-site laundry.",
+      "Comfortable studios 1 mile from The Village and 5 miles from Pine Knob. Book a nightly stay online, or call us for extended stays.",
+    heroAlt: "Rustic studio with wood-panel walls and a log-frame bed at The Olde Mill Inn of Clarkston North",
     glanceAria: "At a glance",
     trust: [
-      { icon: "calendar_month", label: "Extended Stays" },
-      { icon: "wifi", label: "Wi-Fi & Wired Internet" },
-      { icon: "tv", label: "Smart TV & Cable" },
-      { icon: "kitchen", label: "Fridge & Microwave" },
-      { icon: "local_laundry_service", label: "On-Site Laundry" },
-      { icon: "call", label: "Call to Book" },
+      { icon: "event_available", label: "Book Online" },
+      { icon: "pets", label: "Pet-Friendly" },
+      { icon: "local_parking", label: "Free Parking" },
+      { icon: "accessible", label: "Step-Free Access" },
+      { icon: "storefront", label: "1 Mi to The Village" },
+      { icon: "music_note", label: "5 Mi to Pine Knob" },
     ],
-    introTitle: "Everything You Need for a Longer Stay",
+    introTitle: "Everything You Need, Close to Everything",
     introText:
-      "The Olde Mill Inn of Clarkston North is an independent inn on Dixie Highway, close to the Village of Clarkston. Whether you're in town for work, relocating or between homes, we offer comfortable accommodations, competitive rates and a team that will do its best to make your stay easy.",
-    roomEyebrow: "The Room",
-    roomTitle: "Room to Settle In",
-    roomText:
-      "Spacious rooms with a comfortable bed, a sitting area and the practical amenities that make a longer stay feel like home.",
-    seeRoom: "See the room",
-    amenitiesTitle: "Amenities",
+      "The Olde Mill Inn of Clarkston North is an independent inn on Dixie Highway with four private-entrance studios. Each has Wi-Fi, a kitchenette with microwave and coffee maker, and free parking right outside your door — whether you're here for a concert at Pine Knob, a weekend in The Village or a longer stay.",
+    studiosTitle: "Our Studios",
+    studiosText: "Four studios for up to two guests. Pick one and book it online.",
+    amenitiesTitle: "In Every Studio",
     extTitle: "Planning an Extended Stay?",
     extText: "Rates depend on how long you're staying. Give us a call and we'll find the right option for you.",
     howItWorks: "How it works",
-    callToBookYourStay: "Call to book your stay",
+    callToBookYourStay: "Call for extended stays",
     reviewsTitle: "What Our Guests Say",
     reviewsNote: "",
     locationsTitle: "Two Locations in Clarkston",
     youAreHere: "You are here",
     northName: "Clarkston North",
-    northText: "Extended stays. Call to book.",
+    northText: "Pet-friendly studios with online booking. Extended stays by phone.",
     lakefront: "Lakefront",
-    southText: "Nightly stays on Van Norman Lake with online booking.",
+    southText: "Rooms on Van Norman Lake with online booking.",
     visitSouth: "Visit Clarkston South",
     exploreTitle: "Explore the Area",
     seeThingsToDo: "See things to do",
     finalTitle: "Ready When You Are",
   },
 
+  roomsPage: {
+    eyebrow: "Studios",
+    title: "Choose Your Studio",
+    subtitle: "Four private-entrance studios for up to two guests. Book nightly stays online; call us for extended stays.",
+    heroAlt: "Two-bed studio with an orange accent wall",
+    viewStudio: "View studio",
+    goodToKnowTitle: "Good to know",
+    goodToKnow: [
+      { icon: "login", label: "Check-in", value: `After ${property.checkIn} at the front desk` },
+      { icon: "logout", label: "Check-out", value: `By ${property.checkOut} — return your key to the front desk` },
+      { icon: "pets", label: "Pets", value: `Welcome, ${property.petFee} per stay` },
+      { icon: "local_parking", label: "Parking", value: `Free, ${property.parkingSpaces} vehicles in front of your studio` },
+      { icon: "smoke_free", label: "Smoking", value: "Non-smoking; no events or parties" },
+      { icon: "local_laundry_service", label: "Laundry", value: "No on-site laundry" },
+    ],
+  },
+
+  roomPage: {
+    bookTitle: "Book this studio",
+    bookText: "Check live availability and rates and book securely online through Vacasa, our booking partner.",
+    extendedNote: "Staying longer? Call us for extended-stay pricing.",
+    photosTitle: "Photos",
+    otherStudios: "Other studios",
+    policiesLink: "Check-in, pets and house rules",
+  },
+
+  gallery: {
+    eyebrow: "Photo gallery",
+    title: "See the Inn",
+    heroAlt: "Front of The Olde Mill Inn of Clarkston North",
+    categories: {
+      exterior: "Exterior",
+      lobby: "Lobby",
+    },
+    ui: {
+      all: "All",
+      filterAria: "Filter photos",
+      viewLarger: "view larger",
+      viewerAria: "Photo viewer",
+      close: "Close photo viewer",
+      prev: "Previous photo",
+      next: "Next photo",
+    },
+    exteriorAlt: "Exterior of The Olde Mill Inn of Clarkston North",
+    lobbyAlt: "Lobby and front desk at The Olde Mill Inn of Clarkston North",
+  },
+
   extendedStay: {
     eyebrow: "Extended stay",
     title: "Stay a While",
-    subtitle: "Comfortable accommodations and attentive service for guests who need more than a night or two.",
+    subtitle: "Comfortable studios and attentive service for guests who need more than a night or two.",
+    heroAlt: "Front porch with the Olde Mill Inn sign",
     whoTitle: "Who it's for",
     whoFor: [
       { icon: "work", title: "Work assignments", text: "Contractors, crews and professionals on a local project." },
@@ -149,72 +265,96 @@ export const en = {
       { icon: "home", title: "Between homes", text: "Somewhere steady during a move, renovation or life change." },
     ],
     includedTitle: "What's included",
-    howTitle: "How to book",
+    howTitle: "How to book an extended stay",
     steps: [
       { title: "Call or send an inquiry", text: `Reach us at ${property.phone.display} or through the contact form.` },
       { title: "Get your rate", text: "Pricing depends on the length of your stay. We'll give you a quote." },
-      { title: "Move in", text: "Settle in and make yourself at home." },
+      { title: "Move in", text: "Pick up your key at the front desk and make yourself at home." },
     ],
     faqTitle: "Frequently asked questions",
   },
 
   faqs: [
     {
-      q: "How much does an extended stay cost?",
-      a: `Rates depend on the length of your stay. Call us at ${property.phone.display} for current pricing.`,
+      q: "How do I book a nightly stay?",
+      a: "Choose a studio on our Studios page and book it online through Vacasa, our booking partner. Stays start at one night.",
     },
     {
-      q: "How do I book?",
-      a: `Extended stays are booked directly with us by phone at ${property.phone.display}. You can also send an inquiry through our contact form and we'll reach out. There is no online booking for this location.`,
+      q: "How do extended stays work?",
+      a: `Extended stays are booked by phone. Call us at ${property.phone.display} for pricing — rates depend on the length of your stay.`,
     },
     {
-      q: "What's included in the room?",
-      a: "Rooms include Wi-Fi and wired internet, a Smart TV with cable, a refrigerator, microwave, coffee maker and air-conditioning.",
+      q: "What time are check-in and check-out?",
+      a: `Check-in is after ${property.checkIn} at the front desk, where you'll receive your key. Check-out is by ${property.checkOut}; please return your key to the front desk.`,
+    },
+    {
+      q: "Are pets allowed?",
+      a: `Yes. Pets are welcome for a fee of ${property.petFee} per stay.`,
+    },
+    {
+      q: "Is there a kitchen?",
+      a: "Each studio has a kitchenette with a microwave and coffee maker. There is no stove or oven. Some studios also have a refrigerator, toaster or cooking basics — see each studio for details.",
     },
     {
       q: "Is there laundry on-site?",
-      a: "Yes. An on-site laundry facility is available to guests.",
+      a: "No, there is no on-site laundry at this location.",
     },
     {
-      q: "I only need a night or two. Can I stay here?",
-      a: `For nightly stays, book at our sister property, ${southLocation.name}, at ${southLocation.address}. It has online booking and a lakefront setting.`,
+      q: "Where do I park?",
+      a: `Parking is free, with room for ${property.parkingSpaces} vehicles in front of your studio in the community lot.`,
+    },
+    {
+      q: "Is the property accessible?",
+      a: "The studios are single-story with step-free entry.",
+    },
+    {
+      q: "Is smoking allowed?",
+      a: "No. All studios are non-smoking, and events, parties and large gatherings are not permitted.",
     },
   ],
-
-  room: {
-    badge: "Extended stay",
-    title: "The Room",
-    text: "Our rooms are spacious and comfortable, with a sitting area and everything you need for day-to-day living during a longer stay.",
-    featuresTitle: "Room features",
-    railTitle: "Ready to stay?",
-    railText: "Call us for pricing and availability, or send an inquiry and we'll reach out.",
-  },
 
   thingsToDo: {
     eyebrow: "Explore the area",
     title: "Things to Do",
-    subtitle: "From concerts and skiing to shopping and local dining, Clarkston's best is a short drive from the inn.",
+    subtitle: "The Village is a mile away and Pine Knob about five. Distances are approximate.",
+    heroAlt: "The Olde Mill Inn of Clarkston North from the parking lot",
     sections: {
+      local: "The Village & Essentials",
       concerts: "Concerts & Entertainment",
       skiing: "Skiing & Winter Activities",
+      outdoors: "Parks, Beaches & Golf",
       shopping: "Shopping",
-      local: "Local Dining & Clarkston",
+      travel: "Getting Here",
     },
   },
 
-  // Distances omitted until measured from the North address. No shuttle,
-  // partnership, discount or ticket claims.
+  // Distances from the owner's sheet. No shuttle, partnership, discount or
+  // ticket claims.
   attractions: [
+    {
+      name: "The Village of Clarkston",
+      category: "local",
+      approxMiles: 1,
+      description: "A walkable historic downtown with highly rated restaurants, outdoor dining and shops.",
+    },
+    {
+      name: "Neiman's Family Market",
+      category: "local",
+      approxMiles: 0.3,
+      description: "A local grocery store just down the road — handy for longer stays.",
+    },
     {
       name: "Pine Knob Music Theatre",
       category: "concerts",
+      approxMiles: 5,
       address: "33 Bob Seger Drive, Clarkston, MI 48348",
-      description: "Michigan's landmark outdoor amphitheater. A short drive from the inn on concert nights.",
+      description: "Michigan's landmark outdoor amphitheater. Allow extra time for traffic on concert nights.",
     },
     {
       name: "Pine Knob Ski and Snowboard Resort",
       category: "skiing",
-      description: "Downhill skiing, snowboarding and tubing just minutes from the inn.",
+      approxMiles: 5,
+      description: "Downhill skiing, snowboarding and tubing.",
     },
     {
       name: "Alpine Valley Ski Resort",
@@ -227,35 +367,56 @@ export const en = {
       description: "Family-friendly slopes a short drive north.",
     },
     {
+      name: "Deer Lake Beach",
+      category: "outdoors",
+      approxMiles: 0.8,
+      description: "A neighborhood beach on Deer Lake, less than a mile away.",
+    },
+    {
+      name: "Shepherd's Hollow Golf Club",
+      category: "outdoors",
+      approxMiles: 3,
+      description: "A golf club a few minutes' drive away.",
+    },
+    {
+      name: "Independence Oaks County Park",
+      category: "outdoors",
+      approxMiles: 6,
+      description: "A large county park with trails and a lake for hiking and picnics.",
+    },
+    {
       name: "Great Lakes Crossing Outlets",
       category: "shopping",
+      approxMiles: 9,
       address: "4000 Baldwin Road, Auburn Hills, MI 48326",
       description: "Michigan's largest indoor outlet mall, with shopping, dining and entertainment.",
     },
     {
-      name: "Downtown Clarkston",
-      category: "local",
-      description: "A walkable historic downtown with local dining, shops and community events.",
+      name: "Bishop International Airport",
+      category: "travel",
+      approxMiles: 25,
+      description: "The nearest commercial airport, in Flint.",
     },
   ] as Attraction[],
 
   contact: {
     eyebrow: "We're here to help",
     title: "Contact Olde Mill Inn North",
+    heroAlt: "Front of The Olde Mill Inn of Clarkston North with the lobby in the center",
     reachUs: "Reach us",
-    directionsText: "We're on Dixie Highway in Clarkston. Tap “Get Directions” for turn-by-turn navigation.",
-    southPrefix: "Only need a night or two? Book online at our lakefront location,",
+    directionsText: "We're on Dixie Highway in Clarkston, about a mile from The Village. Check in at the front desk in the center of the building. Tap “Get Directions” for turn-by-turn navigation.",
+    southPrefix: "Looking for a lakefront stay? Visit our sister property,",
     formTitle: "Send an inquiry",
   },
 
   form: {
     intro:
-      "Tell us about the stay you need and we'll reach out with availability and pricing. Submitting this form does not confirm a reservation.",
+      "Planning an extended stay or have a question? Tell us what you need and we'll reach out. Submitting this form does not confirm a reservation.",
     name: "Name",
     email: "Email",
     phone: "Phone (optional)",
-    moveIn: "Move-in date (optional)",
-    moveOut: "Move-out date (optional)",
+    moveIn: "Arrival date (optional)",
+    moveOut: "Departure date (optional)",
     message: "Message",
     consent: "By submitting, you agree we may use the details above to respond to your inquiry. We don't sell your information.",
     errorPrefix: "Sorry — we couldn't send your message right now. Please call",
@@ -272,7 +433,7 @@ export const en = {
       {
         h: "Information we collect",
         ps: [
-          "If you use our contact form, we collect the details you provide — such as your name, email address, optional phone number, optional move-in and move-out dates and your message — so we can respond to your inquiry.",
+          "If you use our contact form, we collect the details you provide — such as your name, email address, optional phone number, optional arrival and departure dates and your message — so we can respond to your inquiry.",
           "Like most websites, we may collect limited technical and usage information (such as pages viewed) to understand how the site is used and to improve it. This is only active if an analytics service has been configured.",
         ],
       },
@@ -282,7 +443,9 @@ export const en = {
       },
       {
         h: "Third-party services",
-        ps: ["Map and directions links open Google Maps. Links to our sister property open its own website, which has its own privacy practices."],
+        ps: [
+          "Online bookings are completed on Vacasa, our booking partner; details you enter there are governed by their terms and privacy practices. Map and directions links open Google Maps. Links to our sister property open its own website, which has its own privacy practices.",
+        ],
       },
     ],
     contactTitle: "Contact",
@@ -304,7 +467,7 @@ export const en = {
       "The full site is available in English and Spanish",
     ],
     propertyTitle: "The property",
-    propertyText: "For questions about accessibility features of the rooms or property, please contact us directly so we can help.",
+    propertyText: "The studios are single-story with step-free entry. Online bookings are completed on our booking partner's system, which is maintained separately. For questions about accessibility features of the studios, please contact us directly so we can help.",
     tellTitle: "Let us know",
     tellPrefix: "If you encounter any difficulty using this site, contact us at",
     or: "or",
@@ -314,8 +477,9 @@ export const en = {
 
 export type Attraction = {
   name: string;
-  category: "concerts" | "skiing" | "shopping" | "local";
+  category: "local" | "concerts" | "skiing" | "outdoors" | "shopping" | "travel";
   description: string;
+  approxMiles?: number;
   address?: string;
 };
 

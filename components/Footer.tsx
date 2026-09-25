@@ -84,6 +84,15 @@ export function Footer({ lang }: { lang: Lang }) {
           </h2>
           <ul className="space-y-3">
             <li>
+              <Link
+                className="text-secondary-fixed-dim hover:text-surface-white transition-colors"
+                href={localePath(lang, "/rooms")}
+                data-analytics-event={EVENTS.bookingClick}
+              >
+                {t.common.bookOnline}
+              </Link>
+            </li>
+            <li>
               <a
                 className="inline-flex items-center gap-1 text-secondary-fixed-dim hover:text-surface-white transition-colors"
                 href={southLocation.url}
@@ -91,7 +100,7 @@ export function Footer({ lang }: { lang: Lang }) {
                 rel="noopener noreferrer"
                 data-analytics-event={EVENTS.southSiteClick}
               >
-                {t.footer.nightly} <Icon name="open_in_new" className="text-sm" />
+                {t.footer.southLink} <Icon name="open_in_new" className="text-sm" />
               </a>
             </li>
             <li>

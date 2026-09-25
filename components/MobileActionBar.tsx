@@ -36,10 +36,11 @@ export function MobileActionBar({ lang }: { lang: Lang }) {
         </a>
         <Link
           className="flex flex-col items-center justify-center gap-0.5 bg-primary text-on-primary rounded-full px-6 min-h-[48px] justify-center active:scale-95 transition-transform"
-          href={localePath(lang, "/contact")}
+          href={localePath(lang, "/rooms")}
+          data-analytics-event={EVENTS.bookingClick}
         >
-          <Icon name="mail" />
-          <span className="font-label-md text-label-md">{t.inquire}</span>
+          <Icon name="calendar_month" />
+          <span className="font-label-md text-label-md">{t.book}</span>
         </Link>
       </div>
     </nav>

@@ -3,6 +3,9 @@ import Image from "next/image";
 import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { AmenityGrid } from "@/components/AmenityGrid";
+import { RoomCard } from "@/components/RoomCard";
+import { rooms, commonAmenities, sortedAmenities } from "@/lib/rooms";
+import { featured } from "@/lib/photos";
 import { property, directionsUrl, southLocation } from "@/lib/property";
 import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
 import { EVENTS } from "@/lib/analytics";
@@ -23,15 +26,9 @@ export default function HomePage({ params }: Props) {
     <>
       {/* Hero */}
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-primary">
+        <Image src={featured.homeHero} alt={h.heroAlt} fill priority sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-primary/55" />
         <div className="relative z-10 text-center max-w-4xl px-margin-mobile text-surface-white pt-28 pb-16">
-          <Image
-            src="/images/logo.png"
-            alt=""
-            width={286}
-            height={350}
-            priority
-            className="h-40 md:h-48 w-auto mx-auto mb-8 drop-shadow-lg"
-          />
           <p className="font-label-lg text-label-lg uppercase tracking-[0.2em] text-primary-fixed mb-4">
             {h.eyebrow}
           </p>
@@ -43,16 +40,15 @@ export default function HomePage({ params }: Props) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <CTA
-              href={property.phone.href}
+              href={to("/rooms")}
               size="lg"
-              icon="call"
               className="bg-sunset-accent text-primary hover:bg-surface-white"
-              analyticsEvent={EVENTS.phoneClick}
+              analyticsEvent={EVENTS.bookingClick}
             >
-              {t.common.callNumber}
+              {t.common.viewStudios}
             </CTA>
-            <CTA href={to("/contact")} variant="glass" size="lg">
-              {t.common.sendInquiry}
+            <CTA href={property.phone.href} variant="glass" size="lg" icon="call" analyticsEvent={EVENTS.phoneClick}>
+              {t.common.callNumber}
             </CTA>
           </div>
         </div>
@@ -81,32 +77,21 @@ export default function HomePage({ params }: Props) {
         </p>
       </section>
 
-      {/* The room */}
-      <section className="pb-section-gap overflow-hidden">
-        <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          <div className="w-full lg:w-1/2 relative">
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/room.jpg"
-                alt={t.common.roomAlt}
-                width={1080}
-                height={1080}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-            <div className="hidden lg:block absolute -bottom-8 -right-8 w-56 h-56 bg-sunset-accent rounded-2xl -z-0 opacity-20" />
+      {/* Studios */}
+      <section className="pb-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+        <div className="flex items-end justify-between mb-8 gap-4 flex-wrap">
+          <div>
+            <h2 className="font-headline-lg text-headline-lg text-primary mb-2">{h.studiosTitle}</h2>
+            <p className="text-on-surface-variant">{h.studiosText}</p>
           </div>
-          <div className="w-full lg:w-1/2">
-            <span className="text-sunset-accent font-label-lg uppercase tracking-[0.2em] mb-4 block">
-              {h.roomEyebrow}
-            </span>
-            <h2 className="font-headline-lg text-headline-lg text-primary mb-6 leading-tight">{h.roomTitle}</h2>
-            <p className="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">{h.roomText}</p>
-            <CTA href={to("/room")} variant="outline">
-              {h.seeRoom}
-            </CTA>
-          </div>
+          <CTA href={to("/rooms")} variant="ghost">
+            {t.common.viewStudios}
+          </CTA>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+          {rooms.map((room) => (
+            <RoomCard key={room.slug} room={room} href={to(`/rooms/${room.slug}`)} t={t} />
+          ))}
         </div>
       </section>
 
@@ -117,7 +102,7 @@ export default function HomePage({ params }: Props) {
             <h2 className="font-headline-lg text-headline-lg text-primary mb-4">{h.amenitiesTitle}</h2>
             <div className="h-1 w-20 bg-sunset-accent mx-auto rounded-full" />
           </div>
-          <AmenityGrid items={t.amenities} />
+          <AmenityGrid keys={sortedAmenities(commonAmenities, "room")} labels={t.amenities} />
         </div>
       </section>
 
@@ -218,7 +203,12 @@ export default function HomePage({ params }: Props) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
           {t.attractions.slice(0, 6).map((a) => (
             <div key={a.name} className="bg-surface-white rounded-xl p-6 border border-outline-variant/10">
-              <h3 className="font-headline-md text-lg text-on-surface mb-2">{a.name}</h3>
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <h3 className="font-headline-md text-lg text-on-surface">{a.name}</h3>
+                {a.approxMiles ? (
+                  <span className="text-sm text-on-surface-variant whitespace-nowrap">{t.roomFacts.miles(a.approxMiles)}</span>
+                ) : null}
+              </div>
               <p className="text-on-surface-variant text-sm">{a.description}</p>
             </div>
           ))}
@@ -235,11 +225,11 @@ export default function HomePage({ params }: Props) {
         <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center">
           <h2 className="font-headline-lg text-headline-lg text-primary mb-8">{h.finalTitle}</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CTA href={property.phone.href} size="lg" icon="call" analyticsEvent={EVENTS.phoneClick}>
-              {t.common.callToBook}
+            <CTA href={to("/rooms")} size="lg" analyticsEvent={EVENTS.bookingClick}>
+              {t.common.bookOnline}
             </CTA>
-            <CTA href={to("/contact")} variant="outline" size="lg" icon="mail">
-              {t.common.sendInquiry}
+            <CTA href={property.phone.href} variant="outline" size="lg" icon="call" analyticsEvent={EVENTS.phoneClick}>
+              {t.common.callNumber}
             </CTA>
             <CTA href={directionsUrl} external variant="outline" size="lg" icon="explore" analyticsEvent={EVENTS.directionsClick}>
               {t.common.getDirections}

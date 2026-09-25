@@ -12,4 +12,4 @@
 
 ## Content facts
 
-Only publish facts confirmed by the owner. See `docs/OWNER-CONFIRMATION.md` for open items. There's no online booking; pricing is by phone only.
+The owner's Google Sheet **Evolve_Listings_6853_Dixie_Hwy** is the source of truth for rooms, amenities, policies, distances and photos. Only publish what it says. Room facts live in `lib/rooms.ts`, policies in `lib/property.ts` and photos in `lib/photos.ts` (`public/images/<category>/`). Nightly stays are booked online through the public Vacasa listing for each studio. Extended stays are by phone, and prices are never shown. Contact details stay on the site's own number and email (not the Evolve guest contact) until the owner says otherwise. See `docs/OWNER-CONFIRMATION.md` for open items.
