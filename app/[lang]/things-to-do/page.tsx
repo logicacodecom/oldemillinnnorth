@@ -1,39 +1,38 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { Icon } from "@/components/Icon";
-import { attractionsByCategory } from "@/lib/attractions";
+import { getDict, pageMetadata, type Lang } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Things to Do Near Clarkston, MI",
-  description:
-    "Concerts at Pine Knob, nearby skiing, shopping at Great Lakes Crossing and downtown Clarkston — all a short drive from Olde Mill Inn North.",
-  alternates: { canonical: "/things-to-do" },
-};
+type Props = { params: { lang: Lang } };
 
-const sections = [
-  { id: "concerts", title: "Concerts & Entertainment", icon: "music_note", items: attractionsByCategory.concerts },
-  { id: "skiing", title: "Skiing & Winter Activities", icon: "downhill_skiing", items: attractionsByCategory.skiing },
-  { id: "shopping", title: "Shopping", icon: "shopping_bag", items: attractionsByCategory.shopping },
-  {
-    id: "local",
-    title: "Local Dining & Clarkston",
-    icon: "restaurant",
-    items: [...attractionsByCategory.local, ...attractionsByCategory.dining],
-  },
-];
+export function generateMetadata({ params }: Props): Metadata {
+  return pageMetadata(params.lang, "/things-to-do", getDict(params.lang).meta.thingsToDo);
+}
+
+const sectionIcons = {
+  concerts: "music_note",
+  skiing: "downhill_skiing",
+  shopping: "shopping_bag",
+  local: "restaurant",
+} as const;
 
 function directionsTo(query: string) {
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
 }
 
-export default function ThingsToDoPage() {
+export default function ThingsToDoPage({ params }: Props) {
+  const t = getDict(params.lang);
+  const p = t.thingsToDo;
+  const sections = (Object.keys(sectionIcons) as (keyof typeof sectionIcons)[]).map((id) => ({
+    id,
+    title: p.sections[id],
+    icon: sectionIcons[id],
+    items: t.attractions.filter((a) => a.category === id),
+  }));
+
   return (
     <>
-      <PageHero
-        eyebrow="Explore the area"
-        title="Things to Do"
-        subtitle="From concerts and skiing to shopping and local dining, Clarkston's best is a short drive from the inn."
-      />
+      <PageHero eyebrow={p.eyebrow} title={p.title} subtitle={p.subtitle} />
 
       <div className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop space-y-16">
         {sections.map((section) => (
@@ -47,22 +46,16 @@ export default function ThingsToDoPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
               {section.items.map((a) => (
                 <div key={a.name} className="bg-surface-white rounded-xl p-6 border border-outline-variant/10 flex flex-col">
-                  <div className="flex items-start justify-between mb-2 gap-2">
-                    <h3 className="font-headline-md text-lg text-on-surface">{a.name}</h3>
-                    {a.approxMiles ? (
-                      <span className="text-sm text-on-surface-variant whitespace-nowrap">≈{a.approxMiles} mi</span>
-                    ) : null}
-                  </div>
+                  <h3 className="font-headline-md text-lg text-on-surface mb-2">{a.name}</h3>
                   <p className="text-on-surface-variant text-sm mb-4 flex-1">{a.description}</p>
                   {a.address ? <p className="text-xs text-on-surface-variant mb-4">{a.address}</p> : null}
-                  {a.note ? <p className="text-xs text-on-surface-variant/80 italic mb-4">{a.note}</p> : null}
                   <a
                     href={directionsTo(a.address ?? `${a.name}, Clarkston, MI`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-primary font-label-lg text-label-lg hover:underline underline-offset-4 mt-auto"
                   >
-                    Directions <Icon name="explore" className="text-base" />
+                    {t.common.directions} <Icon name="explore" className="text-base" />
                   </a>
                 </div>
               ))}

@@ -1,10 +1,10 @@
-import { property } from "@/lib/property";
+import type { Dict } from "@/lib/dictionaries/en";
 import { Icon } from "./Icon";
 
-export function AmenityGrid({ className = "" }: { className?: string }) {
+export function AmenityGrid({ items, className = "" }: { items: Dict["amenities"]; className?: string }) {
   return (
     <ul className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ${className}`}>
-      {property.amenities.map((a) => (
+      {items.map((a) => (
         <li
           key={a.label}
           className="flex items-center gap-3 bg-surface-white rounded-xl p-4 border border-outline-variant/10"

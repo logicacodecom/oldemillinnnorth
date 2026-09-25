@@ -30,6 +30,17 @@ public/images/  logo.png (North badge), room.jpg
 assets/brand/   Source images pulled from the previous Wix site
 ```
 
+## Languages (English / Spanish)
+
+English is served at the root (`/room`) and Spanish under `/es` (`/es/room`).
+All pages live once in `app/[lang]/`, and `middleware.ts` rewrites unprefixed URLs
+to the internal `/en` segment (`/en/*` redirects back to the root). All copy
+lives in `lib/dictionaries/en.ts` and `es.ts`. `es.ts` is typed against
+`en.ts`, so a missing Spanish string fails the typecheck. The header toggle
+(`components/LanguageToggle.tsx`) links to the same page in the other language.
+Guest reviews stay in their original English. Run `node lib/i18n.check.mjs` to
+check the path helpers.
+
 There is **no online booking** for this location. Every call to action is
 "call to book" or the inquiry form. Nightly-stay guests go to the South site.
 

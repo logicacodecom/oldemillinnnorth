@@ -8,7 +8,6 @@ export type Review = {
 
 export const property = {
   name: "The Olde Mill Inn of Clarkston North",
-  eyebrow: "Extended stays in Clarkston, Michigan",
   address: {
     street: "6853 Dixie Hwy",
     city: "Clarkston",
@@ -21,19 +20,8 @@ export const property = {
     href: "tel:+12486251522",
   },
   email: process.env.NEXT_PUBLIC_PROPERTY_EMAIL ?? "ClarkstonHotel@gmail.com",
-  // Amenities as published on the previous North site.
-  amenities: [
-    { icon: "wifi", label: "Wireless internet (Wi-Fi)" },
-    { icon: "lan", label: "Wired (LAN) internet" },
-    { icon: "tv", label: "Smart TV" },
-    { icon: "live_tv", label: "Cable television" },
-    { icon: "kitchen", label: "Refrigerator" },
-    { icon: "microwave", label: "Microwave" },
-    { icon: "coffee_maker", label: "Coffee maker" },
-    { icon: "ac_unit", label: "Air-conditioning" },
-    { icon: "local_laundry_service", label: "On-site laundry facility" },
-  ],
   // Owner-approved guest reviews carried over from the previous North site.
+  // Shown in the original English on both language versions.
   reviews: [
     {
       quote:

@@ -18,6 +18,7 @@ export async function POST(request: Request) {
   const arrival = String(body.arrival ?? "").trim();
   const departure = String(body.departure ?? "").trim();
   const message = String(body.message ?? "").trim();
+  const spanish = body.lang === "es";
   if (!name || !email || !message || !email.includes("@")) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
   }
@@ -31,6 +32,7 @@ export async function POST(request: Request) {
     const text = [
       "New inquiry from oldemillinnnorth.com",
       "",
+      spanish ? "Language: Spanish (submitted from the Spanish site)" : "",
       `Name: ${name}`,
       `Email: ${email}`,
       phone ? `Phone: ${phone}` : "",
@@ -52,7 +54,7 @@ export async function POST(request: Request) {
           // still being verified in Resend). Falls back to the property email.
           to: [process.env.CONTACT_TO || property.email],
           reply_to: email,
-          subject: `North website inquiry — ${name}`,
+          subject: `North website inquiry${spanish ? " (Español)" : ""} — ${name}`,
           text,
         }),
       });

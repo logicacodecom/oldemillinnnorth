@@ -4,52 +4,38 @@ import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
 import { AmenityGrid } from "@/components/AmenityGrid";
-import { faqs } from "@/lib/faqs";
 import { property } from "@/lib/property";
+import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
 import { EVENTS } from "@/lib/analytics";
 
-export const metadata: Metadata = {
-  title: "Extended Stay in Clarkston, MI",
-  description:
-    "Extended-stay lodging at The Olde Mill Inn of Clarkston North. Wi-Fi, Smart TV, refrigerator, microwave and on-site laundry. Call for pricing.",
-  alternates: { canonical: "/extended-stay" },
-};
+type Props = { params: { lang: Lang } };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+export function generateMetadata({ params }: Props): Metadata {
+  return pageMetadata(params.lang, "/extended-stay", getDict(params.lang).meta.extendedStay);
+}
 
-const whoFor = [
-  { icon: "work", title: "Work assignments", text: "Contractors, crews and professionals on a local project." },
-  { icon: "local_shipping", title: "Relocating", text: "A comfortable base while you find your next place in the area." },
-  { icon: "home", title: "Between homes", text: "Somewhere steady during a move, renovation or life change." },
-];
+export default function ExtendedStayPage({ params }: Props) {
+  const t = getDict(params.lang);
+  const e = t.extendedStay;
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    inLanguage: params.lang,
+    mainEntity: t.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
 
-const steps = [
-  { n: 1, title: "Call or send an inquiry", text: `Reach us at ${property.phone.display} or through the contact form.` },
-  { n: 2, title: "Get your rate", text: "Pricing depends on the length of your stay. We'll give you a quote." },
-  { n: 3, title: "Move in", text: "Settle in and make yourself at home." },
-];
-
-export default function ExtendedStayPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Extended stay"
-        title="Stay a While"
-        subtitle="Comfortable accommodations and attentive service for guests who need more than a night or two."
-      />
+      <PageHero eyebrow={e.eyebrow} title={e.title} subtitle={e.subtitle} />
 
       <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-        <h2 className="font-headline-lg text-headline-lg text-primary mb-8">Who it&apos;s for</h2>
+        <h2 className="font-headline-lg text-headline-lg text-primary mb-8">{e.whoTitle}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {whoFor.map((w) => (
+          {e.whoFor.map((w) => (
             <div key={w.title} className="bg-surface-white rounded-xl p-6 border border-outline-variant/10">
               <div className="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-primary mb-4">
                 <Icon name={w.icon} />
@@ -63,18 +49,18 @@ export default function ExtendedStayPage() {
 
       <section className="py-section-gap bg-surface-container-low">
         <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-8">What&apos;s included</h2>
-          <AmenityGrid />
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-8">{e.includedTitle}</h2>
+          <AmenityGrid items={t.amenities} />
         </div>
       </section>
 
       <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-        <h2 className="font-headline-lg text-headline-lg text-primary mb-8">How to book</h2>
+        <h2 className="font-headline-lg text-headline-lg text-primary mb-8">{e.howTitle}</h2>
         <ol className="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-10">
-          {steps.map((s) => (
-            <li key={s.n} className="bg-surface-white rounded-xl p-6 border border-outline-variant/10">
+          {e.steps.map((s, i) => (
+            <li key={s.title} className="bg-surface-white rounded-xl p-6 border border-outline-variant/10">
               <span className="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-md mb-4">
-                {s.n}
+                {i + 1}
               </span>
               <h3 className="font-headline-md text-lg text-on-surface mb-2">{s.title}</h3>
               <p className="text-on-surface-variant text-sm">{s.text}</p>
@@ -83,19 +69,19 @@ export default function ExtendedStayPage() {
         </ol>
         <div className="flex flex-col sm:flex-row gap-4">
           <CTA href={property.phone.href} size="lg" icon="call" analyticsEvent={EVENTS.phoneClick}>
-            Call for Pricing
+            {t.common.callForPricing}
           </CTA>
-          <CTA href="/contact" variant="outline" size="lg" icon="mail">
-            Send an Inquiry
+          <CTA href={localePath(params.lang, "/contact")} variant="outline" size="lg" icon="mail">
+            {t.common.sendInquiry}
           </CTA>
         </div>
       </section>
 
       <section className="pb-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="max-w-3xl">
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Frequently asked questions</h2>
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">{e.faqTitle}</h2>
           <div className="space-y-3">
-            {faqs.map((f) => (
+            {t.faqs.map((f) => (
               <details key={f.q} className="bg-surface-white rounded-xl border border-outline-variant/20 p-5">
                 <summary className="font-headline-md text-lg text-on-surface cursor-pointer marker:text-primary">
                   {f.q}

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter, Great_Vibes } from "next/font/google";
-import "./globals.css";
+import { notFound } from "next/navigation";
+import "../globals.css";
 import { siteUrl, property } from "@/lib/property";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -8,6 +9,7 @@ import { Main } from "@/components/Main";
 import { MobileActionBar } from "@/components/MobileActionBar";
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { JsonLd, lodgingJsonLd } from "@/components/JsonLd";
+import { langs, isLang, getDict, localePath, type Lang } from "@/lib/i18n";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -31,32 +33,41 @@ const greatVibes = Great_Vibes({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: "Extended Stay Hotel in Clarkston, MI | Olde Mill Inn North",
-    template: "%s | Olde Mill Inn North",
-  },
-  description:
-    "Extended stays at The Olde Mill Inn of Clarkston North, 6853 Dixie Hwy. Wi-Fi, Smart TV, kitchen basics and on-site laundry. Call to book.",
-  applicationName: property.name,
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    siteName: property.name,
-    url: siteUrl,
-    title: "Extended Stay Hotel in Clarkston, MI | Olde Mill Inn North",
-    description: "Comfortable extended stays on Dixie Highway in Clarkston, Michigan. Call to book.",
-    images: [{ url: "/images/room.jpg", width: 1080, height: 1080, alt: property.name }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Olde Mill Inn of Clarkston North",
-    description: "Your home away from home in Clarkston, Michigan.",
-    images: ["/images/room.jpg"],
-  },
-  robots: { index: true, follow: true },
-};
+// Only /en (served at the root) and /es exist; anything else 404s.
+export const dynamicParams = false;
+export function generateStaticParams() {
+  return langs.map((lang) => ({ lang }));
+}
+
+export function generateMetadata({ params }: { params: { lang: Lang } }): Metadata {
+  const t = getDict(params.lang);
+  return {
+    metadataBase: new URL(siteUrl),
+    title: { default: t.meta.defaultTitle, template: t.meta.titleTemplate },
+    description: t.meta.description,
+    applicationName: property.name,
+    alternates: {
+      canonical: localePath(params.lang, "/"),
+      languages: { en: "/", es: "/es", "x-default": "/" },
+    },
+    openGraph: {
+      type: "website",
+      siteName: property.name,
+      locale: t.ogLocale,
+      url: `${siteUrl}${localePath(params.lang, "/")}`,
+      title: t.meta.defaultTitle,
+      description: t.meta.ogDescription,
+      images: [{ url: "/images/room.jpg", width: 1080, height: 1080, alt: property.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Olde Mill Inn of Clarkston North",
+      description: t.meta.twitterDescription,
+      images: ["/images/room.jpg"],
+    },
+    robots: { index: true, follow: true },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#002046",
@@ -64,9 +75,18 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { lang: string };
+}) {
+  if (!isLang(params.lang)) notFound();
+  const lang = params.lang;
+  const t = getDict(lang);
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${greatVibes.variable} scroll-smooth`}>
+    <html lang={t.htmlLang} className={`${playfair.variable} ${inter.variable} ${greatVibes.variable} scroll-smooth`}>
       <head>
         {/* Material Symbols icon font (decorative icons; paired with text labels) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,12 +102,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-on-primary focus:px-4 focus:py-2 focus:rounded-lg"
         >
-          Skip to content
+          {t.skip}
         </a>
-        <Header />
+        <Header lang={lang} nav={t.nav} common={t.common} toggle={t.toggle} />
         <Main>{children}</Main>
-        <Footer />
-        <MobileActionBar />
+        <Footer lang={lang} />
+        <MobileActionBar lang={lang} />
         <AnalyticsListener />
         <JsonLd data={lodgingJsonLd()} />
       </body>

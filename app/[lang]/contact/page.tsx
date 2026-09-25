@@ -4,23 +4,25 @@ import { ContactForm } from "@/components/ContactForm";
 import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { property, addressLine, directionsUrl, southLocation } from "@/lib/property";
+import { getDict, pageMetadata, type Lang } from "@/lib/i18n";
 import { EVENTS } from "@/lib/analytics";
 
-export const metadata: Metadata = {
-  title: "Contact & Directions",
-  description:
-    "Contact The Olde Mill Inn of Clarkston North at 6853 Dixie Hwy for extended-stay pricing, availability and directions.",
-  alternates: { canonical: "/contact" },
-};
+type Props = { params: { lang: Lang } };
 
-export default function ContactPage() {
+export function generateMetadata({ params }: Props): Metadata {
+  return pageMetadata(params.lang, "/contact", getDict(params.lang).meta.contact);
+}
+
+export default function ContactPage({ params }: Props) {
+  const t = getDict(params.lang);
+  const c = t.contact;
   return (
     <>
-      <PageHero eyebrow="We're here to help" title="Contact Olde Mill Inn North" />
+      <PageHero eyebrow={c.eyebrow} title={c.title} />
 
       <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div>
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Reach us</h2>
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">{c.reachUs}</h2>
           <address className="not-italic space-y-5 text-on-surface">
             <p className="flex items-start gap-3">
               <Icon name="location_on" className="text-primary mt-0.5" />
@@ -46,25 +48,22 @@ export default function ContactPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
             <CTA href={property.phone.href} icon="call" analyticsEvent={EVENTS.phoneClick}>
-              Call to Book
+              {t.common.callToBook}
             </CTA>
             <CTA href={directionsUrl} external variant="outline" icon="explore" analyticsEvent={EVENTS.directionsClick}>
-              Get Directions
+              {t.common.getDirections}
             </CTA>
           </div>
 
           <div className="mt-10 rounded-2xl overflow-hidden border border-outline-variant/20">
             <div className="bg-surface-container p-6">
-              <p className="font-headline-md text-lg text-on-surface mb-1">Directions</p>
-              <p className="text-on-surface-variant text-sm">
-                We&apos;re on Dixie Highway in Clarkston. Tap “Get Directions” for turn-by-turn
-                navigation.
-              </p>
+              <p className="font-headline-md text-lg text-on-surface mb-1">{t.common.directions}</p>
+              <p className="text-on-surface-variant text-sm">{c.directionsText}</p>
             </div>
           </div>
 
           <p className="mt-8 text-sm text-on-surface-variant">
-            Only need a night or two? Book online at our lakefront location,{" "}
+            {c.southPrefix}{" "}
             <a
               href={southLocation.url}
               target="_blank"
@@ -79,8 +78,8 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Send an inquiry</h2>
-          <ContactForm />
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">{c.formTitle}</h2>
+          <ContactForm t={t.form} lang={params.lang} />
         </div>
       </section>
     </>

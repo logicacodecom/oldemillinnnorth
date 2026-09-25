@@ -1,4 +1,5 @@
 import { property, siteUrl } from "@/lib/property";
+import { en } from "@/lib/dictionaries/en";
 
 // Accurate JSON-LD. Only verified data — no aggregateRating, reviews, star
 // rating, prices, check-in times or pet policy until confirmed.
@@ -21,7 +22,8 @@ export function lodgingJsonLd() {
     email: property.email,
     description:
       "Independent, family-operated extended-stay lodging on Dixie Highway in Clarkston, Michigan.",
-    amenityFeature: property.amenities.map((a) => ({
+    availableLanguage: ["English", "Spanish"],
+    amenityFeature: en.amenities.map((a) => ({
       "@type": "LocationFeatureSpecification",
       name: a.label,
       value: true,
