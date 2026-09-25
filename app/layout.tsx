@@ -1,0 +1,96 @@
+import type { Metadata, Viewport } from "next";
+import { Playfair_Display, Inter, Great_Vibes } from "next/font/google";
+import "./globals.css";
+import { siteUrl, property } from "@/lib/property";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Main } from "@/components/Main";
+import { MobileActionBar } from "@/components/MobileActionBar";
+import { AnalyticsListener } from "@/components/AnalyticsListener";
+import { JsonLd, lodgingJsonLd } from "@/components/JsonLd";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+// Ornate script for the "Olde Mill Inn" wordmark, approximating the logo lettering.
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-great-vibes",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Extended Stay Hotel in Clarkston, MI | Olde Mill Inn North",
+    template: "%s | Olde Mill Inn North",
+  },
+  description:
+    "Extended stays at The Olde Mill Inn of Clarkston North, 6853 Dixie Hwy. Wi-Fi, Smart TV, kitchen basics and on-site laundry. Call to book.",
+  applicationName: property.name,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: property.name,
+    url: siteUrl,
+    title: "Extended Stay Hotel in Clarkston, MI | Olde Mill Inn North",
+    description: "Comfortable extended stays on Dixie Highway in Clarkston, Michigan. Call to book.",
+    images: [{ url: "/images/room.jpg", width: 1080, height: 1080, alt: property.name }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Olde Mill Inn of Clarkston North",
+    description: "Your home away from home in Clarkston, Michigan.",
+    images: ["/images/room.jpg"],
+  },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#002046",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${playfair.variable} ${inter.variable} ${greatVibes.variable} scroll-smooth`}>
+      <head>
+        {/* Material Symbols icon font (decorative icons; paired with text labels) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font -- icon font in root layout loads site-wide */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap"
+        />
+      </head>
+      <body className="bg-background text-on-surface font-body-md antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-on-primary focus:px-4 focus:py-2 focus:rounded-lg"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <Main>{children}</Main>
+        <Footer />
+        <MobileActionBar />
+        <AnalyticsListener />
+        <JsonLd data={lodgingJsonLd()} />
+      </body>
+    </html>
+  );
+}

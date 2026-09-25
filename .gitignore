@@ -1,0 +1,27 @@
+# Hi-res photo originals — kept local only, not pushed (~418 MB). See README.
+/assets/gallery/full/
+
+# Vercel
+.vercel/
+
+# Dependencies / build output
+node_modules/
+dist/
+build/
+.next/
+next-env.d.ts
+.cache/
+*.tsbuildinfo
+*.log
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vercel
