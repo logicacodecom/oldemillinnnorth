@@ -27,10 +27,9 @@ export function lodgingJsonLd() {
     email: property.email,
     checkinTime: property.checkInTime24,
     checkoutTime: property.checkOutTime24,
-    petsAllowed: true,
     availableLanguage: ["English", "Spanish"],
     description:
-      "Independent, pet-friendly studios on Dixie Highway in Clarkston, Michigan, about a mile from The Village and five miles from Pine Knob.",
+      "Independent studios on Dixie Highway in Clarkston, Michigan, about a mile from The Village and five miles from Pine Knob.",
     amenityFeature: commonAmenities.map((k) => ({
       "@type": "LocationFeatureSpecification",
       name: en.amenities[k],

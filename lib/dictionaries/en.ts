@@ -11,16 +11,16 @@ export const en = {
   skip: "Skip to content",
 
   meta: {
-    defaultTitle: "Pet-Friendly Studios in Clarkston, MI | Olde Mill Inn North",
+    defaultTitle: "Studios in Clarkston, MI | Olde Mill Inn North",
     titleTemplate: "%s | Olde Mill Inn North",
     description:
-      "Pet-friendly studios at The Olde Mill Inn of Clarkston North, 6853 Dixie Hwy — 1 mile from The Village and 5 miles from Pine Knob. Book nightly stays online; call for extended stays.",
-    ogDescription: "Pet-friendly studios 1 mile from The Village and 5 miles from Pine Knob. Book online or call for extended stays.",
+      "Studios at The Olde Mill Inn of Clarkston North, 6853 Dixie Hwy — 1 mile from The Village and 5 miles from Pine Knob. Book nightly stays online; call for extended stays.",
+    ogDescription: "Studios 1 mile from The Village and 5 miles from Pine Knob. Book online or call for extended stays.",
     twitterDescription: "Your home away from home in Clarkston, Michigan.",
     rooms: {
       title: "Studios",
       description:
-        "Four pet-friendly studios at The Olde Mill Inn of Clarkston North, each with Wi-Fi, a kitchenette with microwave and coffee maker, and free parking. Book online.",
+        "Four studios at The Olde Mill Inn of Clarkston North, each with Wi-Fi, a kitchenette with microwave and coffee maker, and free parking. Book online.",
     },
     gallery: {
       title: "Photo Gallery",
@@ -29,7 +29,7 @@ export const en = {
     extendedStay: {
       title: "Extended Stay in Clarkston, MI",
       description:
-        "Extended stays at The Olde Mill Inn of Clarkston North: pet-friendly studios with Wi-Fi, kitchenette and free parking. Call for pricing.",
+        "Extended stays at The Olde Mill Inn of Clarkston North: studios with Wi-Fi, kitchenette and free parking. Call for pricing.",
     },
     thingsToDo: {
       title: "Things to Do Near Clarkston, MI",
@@ -85,7 +85,7 @@ export const en = {
   mobileBar: { aria: "Quick actions", call: "Call", directions: "Directions", book: "Book" },
 
   footer: {
-    tagline: "Independent, pet-friendly studios on Dixie Highway in Clarkston, Michigan.",
+    tagline: "Independent studios on Dixie Highway in Clarkston, Michigan.",
     explore: "Explore",
     contact: "Contact",
     plan: "Plan",
@@ -119,7 +119,6 @@ export const en = {
     privateEntrance: "Private entrance",
     parking: "Free parking lot",
     stepFree: "Step-free access",
-    pets: "Pets allowed (fee)",
     nonSmoking: "Non-smoking",
     children: "Suitable for children",
     elderly: "Suitable for older guests",
@@ -168,7 +167,7 @@ export const en = {
   },
 
   home: {
-    eyebrow: "Pet-friendly studios in Clarkston, Michigan",
+    eyebrow: "Studios in Clarkston, Michigan",
     heroTitle: "Your Home Away From Home in Clarkston",
     heroText:
       "Comfortable studios 1 mile from The Village and 5 miles from Pine Knob. Book a nightly stay online, or call us for extended stays.",
@@ -176,7 +175,6 @@ export const en = {
     glanceAria: "At a glance",
     trust: [
       { icon: "event_available", label: "Book Online" },
-      { icon: "pets", label: "Pet-Friendly" },
       { icon: "local_parking", label: "Free Parking Lot" },
       { icon: "accessible", label: "Step-Free Access" },
       { icon: "storefront", label: "1 Mi to The Village" },
@@ -197,7 +195,7 @@ export const en = {
     locationsTitle: "Two Locations in Clarkston",
     youAreHere: "You are here",
     northName: "Clarkston North",
-    northText: "Pet-friendly studios with online booking. Extended stays by phone.",
+    northText: "Studios with online booking. Extended stays by phone.",
     lakefront: "Lakefront",
     southText: "Rooms on Van Norman Lake with online booking.",
     visitSouth: "Visit Clarkston South",
@@ -216,7 +214,6 @@ export const en = {
     goodToKnow: [
       { icon: "login", label: "Check-in", value: `After ${property.checkIn} at the front desk` },
       { icon: "logout", label: "Check-out", value: `By ${property.checkOut} — return your key to the front desk` },
-      { icon: "pets", label: "Pets", value: `Welcome, ${property.petFee} per stay` },
       { icon: "local_parking", label: "Parking", value: `Free, ${property.parkingSpaces} vehicles in front of your studio` },
       { icon: "smoke_free", label: "Smoking", value: "Non-smoking; no events or parties" },
       { icon: "local_laundry_service", label: "Laundry", value: "No on-site laundry" },
@@ -229,7 +226,7 @@ export const en = {
     extendedNote: "Staying longer? Call us for extended-stay pricing.",
     photosTitle: "Photos",
     otherStudios: "Other studios",
-    policiesLink: "Check-in, pets and house rules",
+    policiesLink: "Check-in and house rules",
   },
 
   gallery: {
@@ -286,10 +283,6 @@ export const en = {
     {
       q: "What time are check-in and check-out?",
       a: `Check-in is after ${property.checkIn} at the front desk, where you'll receive your key. Check-out is by ${property.checkOut}; please return your key to the front desk.`,
-    },
-    {
-      q: "Are pets allowed?",
-      a: `Yes. Pets are welcome for a fee of ${property.petFee} per stay.`,
     },
     {
       q: "Is there a kitchen?",

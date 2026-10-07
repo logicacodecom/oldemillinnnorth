@@ -10,16 +10,16 @@ export const es: Dict = {
   skip: "Saltar al contenido",
 
   meta: {
-    defaultTitle: "Estudios que aceptan mascotas en Clarkston, MI | Olde Mill Inn North",
+    defaultTitle: "Estudios en Clarkston, MI | Olde Mill Inn North",
     titleTemplate: "%s | Olde Mill Inn North",
     description:
-      "Estudios que aceptan mascotas en The Olde Mill Inn of Clarkston North, 6853 Dixie Hwy, a 1 milla de The Village y a 5 millas de Pine Knob. Reserve por noche en línea; llame para estadías prolongadas.",
-    ogDescription: "Estudios que aceptan mascotas a 1 milla de The Village y a 5 millas de Pine Knob. Reserve en línea o llame para estadías prolongadas.",
+      "Estudios en The Olde Mill Inn of Clarkston North, 6853 Dixie Hwy, a 1 milla de The Village y a 5 millas de Pine Knob. Reserve por noche en línea; llame para estadías prolongadas.",
+    ogDescription: "Estudios a 1 milla de The Village y a 5 millas de Pine Knob. Reserve en línea o llame para estadías prolongadas.",
     twitterDescription: "Su hogar lejos de casa en Clarkston, Michigan.",
     rooms: {
       title: "Estudios",
       description:
-        "Cuatro estudios que aceptan mascotas en The Olde Mill Inn of Clarkston North, cada uno con Wi-Fi, cocineta con microondas y cafetera, y estacionamiento gratuito. Reserve en línea.",
+        "Cuatro estudios en The Olde Mill Inn of Clarkston North, cada uno con Wi-Fi, cocineta con microondas y cafetera, y estacionamiento gratuito. Reserve en línea.",
     },
     gallery: {
       title: "Galería de fotos",
@@ -28,7 +28,7 @@ export const es: Dict = {
     extendedStay: {
       title: "Estadía prolongada en Clarkston, MI",
       description:
-        "Estadías prolongadas en The Olde Mill Inn of Clarkston North: estudios que aceptan mascotas con Wi-Fi, cocineta y estacionamiento gratuito. Llame para consultar precios.",
+        "Estadías prolongadas en The Olde Mill Inn of Clarkston North: estudios con Wi-Fi, cocineta y estacionamiento gratuito. Llame para consultar precios.",
     },
     thingsToDo: {
       title: "Qué hacer cerca de Clarkston, MI",
@@ -84,7 +84,7 @@ export const es: Dict = {
   mobileBar: { aria: "Acciones rápidas", call: "Llamar", directions: "Ubicación", book: "Reservar" },
 
   footer: {
-    tagline: "Estudios independientes que aceptan mascotas en Dixie Highway, en Clarkston, Michigan.",
+    tagline: "Estudios independientes en Dixie Highway, en Clarkston, Michigan.",
     explore: "Explorar",
     contact: "Contacto",
     plan: "Planifique",
@@ -118,7 +118,6 @@ export const es: Dict = {
     privateEntrance: "Entrada privada",
     parking: "Estacionamiento gratuito en el lugar",
     stepFree: "Acceso sin escalones",
-    pets: "Se aceptan mascotas (con cargo)",
     nonSmoking: "No fumar",
     children: "Apto para niños",
     elderly: "Apto para personas mayores",
@@ -167,7 +166,7 @@ export const es: Dict = {
   },
 
   home: {
-    eyebrow: "Estudios que aceptan mascotas en Clarkston, Michigan",
+    eyebrow: "Estudios en Clarkston, Michigan",
     heroTitle: "Su hogar lejos de casa en Clarkston",
     heroText:
       "Estudios cómodos a 1 milla de The Village y a 5 millas de Pine Knob. Reserve su estadía por noche en línea o llámenos para estadías prolongadas.",
@@ -175,7 +174,6 @@ export const es: Dict = {
     glanceAria: "De un vistazo",
     trust: [
       { icon: "event_available", label: "Reserve en línea" },
-      { icon: "pets", label: "Se aceptan mascotas" },
       { icon: "local_parking", label: "Estacionamiento gratuito" },
       { icon: "accessible", label: "Acceso sin escalones" },
       { icon: "storefront", label: "1 mi de The Village" },
@@ -196,7 +194,7 @@ export const es: Dict = {
     locationsTitle: "Dos ubicaciones en Clarkston",
     youAreHere: "Usted está aquí",
     northName: "Clarkston North",
-    northText: "Estudios que aceptan mascotas con reservas en línea. Estadías prolongadas por teléfono.",
+    northText: "Estudios con reservas en línea. Estadías prolongadas por teléfono.",
     lakefront: "Frente al lago",
     southText: "Habitaciones junto al lago Van Norman con reservas en línea.",
     visitSouth: "Visitar Clarkston South",
@@ -215,7 +213,6 @@ export const es: Dict = {
     goodToKnow: [
       { icon: "login", label: "Llegada", value: `Después de las ${property.checkIn} en la recepción` },
       { icon: "logout", label: "Salida", value: `Antes de las ${property.checkOut}; devuelva su llave en la recepción` },
-      { icon: "pets", label: "Mascotas", value: `Bienvenidas, ${property.petFee} por estadía` },
       { icon: "local_parking", label: "Estacionamiento", value: `Gratuito, ${property.parkingSpaces} vehículos frente a su estudio` },
       { icon: "smoke_free", label: "Fumar", value: "Prohibido fumar; no se permiten eventos ni fiestas" },
       { icon: "local_laundry_service", label: "Lavandería", value: "No hay lavandería en el lugar" },
@@ -228,7 +225,7 @@ export const es: Dict = {
     extendedNote: "¿Se queda más tiempo? Llámenos para precios de estadías prolongadas.",
     photosTitle: "Fotos",
     otherStudios: "Otros estudios",
-    policiesLink: "Llegada, mascotas y reglas de la casa",
+    policiesLink: "Llegada y reglas de la casa",
   },
 
   gallery: {
@@ -285,10 +282,6 @@ export const es: Dict = {
     {
       q: "¿A qué hora son la llegada y la salida?",
       a: `La llegada es después de las ${property.checkIn} en la recepción, donde recibirá su llave. La salida es antes de las ${property.checkOut}; por favor devuelva su llave en la recepción.`,
-    },
-    {
-      q: "¿Se aceptan mascotas?",
-      a: `Sí. Las mascotas son bienvenidas con un cargo de ${property.petFee} por estadía.`,
     },
     {
       q: "¿Hay cocina?",

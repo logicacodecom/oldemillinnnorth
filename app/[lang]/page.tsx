@@ -56,7 +56,7 @@ export default function HomePage({ params }: Props) {
 
       {/* Trust strip */}
       <section aria-label={h.glanceAria} className="bg-surface-white py-12 border-b border-outline-variant/20">
-        <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {h.trust.map((item) => (
             <div key={item.label} className="flex items-center gap-3">
               <div className="w-12 h-12 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-primary">

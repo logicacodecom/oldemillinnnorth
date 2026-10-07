@@ -25,7 +25,6 @@ export const property = {
   checkOut: "11:00 AM",
   checkInTime24: "15:00",
   checkOutTime24: "11:00",
-  petFee: "$50",
   parkingSpaces: 2,
   // Approximate distances from the sheet, in miles.
   milesToVillage: 1,

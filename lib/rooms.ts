@@ -8,7 +8,7 @@ import { photosFor, type PhotoCategory } from "./photos";
 export type AmenityKey =
   | "ac" | "heating" | "wifi" | "coffeeMaker" | "microwave" | "kitchenette" | "toiletries"
   | "hairDryer" | "hangers" | "linens" | "towels" | "trashBags" | "parking" | "privateEntrance"
-  | "coDetector" | "fireExtinguisher" | "firstAid" | "smokeDetector" | "nonSmoking" | "pets"
+  | "coDetector" | "fireExtinguisher" | "firstAid" | "smokeDetector" | "nonSmoking"
   | "stepFree" | "children" | "elderly" | "iron" | "shampoo" | "dishware" | "toaster" | "shower"
   | "cookingBasics" | "refrigerator" | "patio" | "books" | "smartTv";
 
@@ -38,7 +38,6 @@ export const amenityMeta: Record<AmenityKey, { icon: string; group: "room" | "pr
   privateEntrance: { icon: "door_front", group: "property" },
   parking: { icon: "local_parking", group: "property" },
   stepFree: { icon: "accessible", group: "property" },
-  pets: { icon: "pets", group: "property" },
   nonSmoking: { icon: "smoke_free", group: "property" },
   children: { icon: "child_care", group: "property" },
   elderly: { icon: "elderly", group: "property" },
@@ -54,7 +53,7 @@ export const amenityMeta: Record<AmenityKey, { icon: string; group: "room" | "pr
 // No cable TV and no wired LAN — confirmed by the owner; never list them.
 export const commonAmenities: AmenityKey[] = [
   "ac", "heating", "wifi", "smartTv", "coffeeMaker", "microwave", "kitchenette", "toiletries", "hairDryer",
-  "hangers", "linens", "towels", "trashBags", "parking", "privateEntrance", "stepFree", "pets",
+  "hangers", "linens", "towels", "trashBags", "parking", "privateEntrance", "stepFree",
   "nonSmoking", "children", "elderly", "coDetector", "fireExtinguisher", "firstAid",
 ];
 
