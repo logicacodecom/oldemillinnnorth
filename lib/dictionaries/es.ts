@@ -228,6 +228,17 @@ export const es: Dict = {
     policiesLink: "Llegada y reglas de la casa",
   },
 
+  availability: {
+    title: "Consulte disponibilidad y tarifas",
+    checkin: "Llegada",
+    checkout: "Salida",
+    guests: "Huéspedes",
+    guest1: "huésped",
+    guestN: "huéspedes",
+    search: "Ver disponibilidad",
+    errorOrder: "Elija una fecha de salida posterior a la de llegada.",
+  },
+
   gallery: {
     eyebrow: "Galería de fotos",
     title: "Conozca el hotel",

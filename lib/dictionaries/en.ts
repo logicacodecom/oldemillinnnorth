@@ -229,6 +229,17 @@ export const en = {
     policiesLink: "Check-in and house rules",
   },
 
+  availability: {
+    title: "Check availability & rates",
+    checkin: "Check-in",
+    checkout: "Check-out",
+    guests: "Guests",
+    guest1: "guest",
+    guestN: "guests",
+    search: "Check availability",
+    errorOrder: "Please choose a check-out date after check-in.",
+  },
+
   gallery: {
     eyebrow: "Photo gallery",
     title: "See the Inn",

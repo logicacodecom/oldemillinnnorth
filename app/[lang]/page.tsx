@@ -3,6 +3,7 @@ import Image from "next/image";
 import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { AmenityGrid } from "@/components/AmenityGrid";
+import { AvailabilityForm } from "@/components/AvailabilityForm";
 import { RoomCard } from "@/components/RoomCard";
 import { rooms, includedEverywhere } from "@/lib/rooms";
 import { featured } from "@/lib/photos";
@@ -54,6 +55,17 @@ export default function HomePage({ params }: Props) {
             </CTA>
           </div>
         </div>
+      </section>
+
+      {/* Check availability: overlaps the hero on desktop, sits below it on mobile */}
+      <section
+        id="availability"
+        className="relative z-20 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-10 md:pt-0 md:-mt-24 md:mb-16 scroll-mt-24"
+      >
+        <h2 className="font-headline-lg text-headline-lg text-primary text-center mb-6 md:hidden">
+          {t.availability.title}
+        </h2>
+        <AvailabilityForm t={t.availability} maxGuests={Math.max(...rooms.map((r) => r.sleeps))} />
       </section>
 
       {/* Trust strip */}

@@ -4,6 +4,7 @@
 
 export const EVENTS = {
   bookingClick: "booking_click",
+  availabilitySearch: "availability_search",
   phoneClick: "phone_click",
   directionsClick: "directions_click",
   southSiteClick: "south_site_click",

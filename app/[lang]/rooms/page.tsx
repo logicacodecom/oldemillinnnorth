@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { RoomCard } from "@/components/RoomCard";
 import { Icon } from "@/components/Icon";
 import { CTA } from "@/components/CTA";
+import { AvailabilityForm } from "@/components/AvailabilityForm";
 import { rooms } from "@/lib/rooms";
 import { bookingUrl } from "@/lib/booking";
 import { featured } from "@/lib/photos";
@@ -23,6 +24,11 @@ export default function RoomsPage({ params }: Props) {
   return (
     <>
       <PageHero eyebrow={p.eyebrow} title={p.title} subtitle={p.subtitle} image={featured.roomsHero} imageAlt={p.heroAlt} />
+
+      <section className="pt-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+        <h2 className="font-headline-lg text-headline-lg text-primary mb-6">{t.availability.title}</h2>
+        <AvailabilityForm t={t.availability} maxGuests={Math.max(...rooms.map((r) => r.sleeps))} />
+      </section>
 
       <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
