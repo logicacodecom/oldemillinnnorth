@@ -27,13 +27,14 @@ app/api/        contact (inquiry email)
 components/     UI shared with the South site (Header, Footer, CTA, PageHero,
                 GalleryGrid, RoomCard, AmenityGrid, ContactForm, …)
 lib/            property.ts (business data + policies), rooms.ts (4 studios,
-                amenities, Vacasa booking links), photos.ts, dictionaries/{en,es}.ts
+                amenities), booking.ts (Cloudbeds URL +
+                room type IDs), photos.ts, dictionaries/{en,es}.ts
 public/images/  logo.png, exterior/, lobby/, studio-1|3|4|8/ (2048px listing photos)
 ```
 
 Source of truth for rooms, amenities, policies, distances and photos: the
 owner's Google Sheet **Evolve_Listings_6853_Dixie_Hwy**. Nightly stays book
-online through each studio's public Vacasa listing; extended stays by phone.
+online through the Cloudbeds booking engine; extended stays by phone.
 
 ## Languages (English / Spanish)
 

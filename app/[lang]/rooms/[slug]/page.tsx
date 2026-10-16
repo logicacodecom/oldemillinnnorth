@@ -7,6 +7,7 @@ import { Icon } from "@/components/Icon";
 import { AmenityGrid } from "@/components/AmenityGrid";
 import { GalleryGrid } from "@/components/GalleryGrid";
 import { RoomCard } from "@/components/RoomCard";
+import { bookingUrl } from "@/lib/booking";
 import { rooms, roomsBySlug, sortedAmenities, type Room } from "@/lib/rooms";
 import { property } from "@/lib/property";
 import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
@@ -98,7 +99,7 @@ export default function RoomPage({ params }: Props) {
             <p className="font-headline-md text-headline-md text-on-surface mb-2">{t.roomPage.bookTitle}</p>
             <p className="text-on-surface-variant text-sm mb-6">{t.roomPage.bookText}</p>
             <div className="flex flex-col gap-3">
-              <CTA href={room.bookingUrl} external size="block" icon="open_in_new" analyticsEvent={EVENTS.bookingClick}>
+              <CTA href={bookingUrl({ slug: room.slug })} sameTab size="block" analyticsEvent={EVENTS.bookingClick}>
                 {t.common.bookOnline}
               </CTA>
               <p className="text-on-surface-variant text-sm mt-3">{t.roomPage.extendedNote}</p>

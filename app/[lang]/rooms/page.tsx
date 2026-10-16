@@ -4,6 +4,7 @@ import { RoomCard } from "@/components/RoomCard";
 import { Icon } from "@/components/Icon";
 import { CTA } from "@/components/CTA";
 import { rooms } from "@/lib/rooms";
+import { bookingUrl } from "@/lib/booking";
 import { featured } from "@/lib/photos";
 import { property } from "@/lib/property";
 import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
@@ -26,7 +27,12 @@ export default function RoomsPage({ params }: Props) {
       <section className="py-section-gap max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
           {rooms.map((room) => (
-            <RoomCard key={room.slug} room={room} href={localePath(lang, `/rooms/${room.slug}`)} t={t} />
+            <div key={room.slug} className="flex flex-col gap-3">
+              <RoomCard room={room} href={localePath(lang, `/rooms/${room.slug}`)} t={t} className="flex-1" />
+              <CTA href={bookingUrl({ slug: room.slug })} sameTab size="block" analyticsEvent={EVENTS.bookingClick}>
+                {t.common.bookOnline}
+              </CTA>
+            </div>
           ))}
         </div>
       </section>

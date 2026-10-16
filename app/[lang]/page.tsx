@@ -9,6 +9,7 @@ import { featured } from "@/lib/photos";
 import { property, directionsUrl, southLocation } from "@/lib/property";
 import { getDict, localePath, pageMetadata, type Lang } from "@/lib/i18n";
 import { EVENTS } from "@/lib/analytics";
+import { bookingUrl } from "@/lib/booking";
 
 type Props = { params: { lang: Lang } };
 
@@ -40,12 +41,13 @@ export default function HomePage({ params }: Props) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <CTA
-              href={to("/rooms")}
+              href={bookingUrl()}
+              sameTab
               size="lg"
               className="bg-sunset-accent text-primary hover:bg-surface-white"
               analyticsEvent={EVENTS.bookingClick}
             >
-              {t.common.viewStudios}
+              {t.common.bookOnline}
             </CTA>
             <CTA href={property.phone.href} variant="glass" size="lg" icon="call" analyticsEvent={EVENTS.phoneClick}>
               {t.common.callNumber}
@@ -225,7 +227,7 @@ export default function HomePage({ params }: Props) {
         <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center">
           <h2 className="font-headline-lg text-headline-lg text-primary mb-8">{h.finalTitle}</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CTA href={to("/rooms")} size="lg" analyticsEvent={EVENTS.bookingClick}>
+            <CTA href={bookingUrl()} sameTab size="lg" analyticsEvent={EVENTS.bookingClick}>
               {t.common.bookOnline}
             </CTA>
             <CTA href={property.phone.href} variant="outline" size="lg" icon="call" analyticsEvent={EVENTS.phoneClick}>

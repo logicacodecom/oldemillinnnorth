@@ -3,7 +3,7 @@
 Source of truth: the owner's Google Sheet **Evolve_Listings_6853_Dixie_Hwy**, confirmed 2026-09-25.
 
 Decided:
-- **Booking:** nightly stays are booked online through each studio's public Vacasa listing. Extended stays are by phone. No prices are shown on the site.
+- **Booking:** nightly stays are booked online through the Cloudbeds booking engine (property 321279; `lib/booking.ts`). Extended stays are by phone. No prices are shown on the site.
 - **Contact:** the site keeps (248) 625-1522 and ClarkstonHotel@gmail.com. The Evolve guest contact is Walid, (248) 343-2419, oldmillinn@icloud.com; the owner may switch to it later.
 - **Photos:** all Evolve listing photos are used (79 distinct, at 2048px).
 - **Owner-confirmed on 2026-09-25:** every studio has a Smart TV and in-room air conditioning and heating (not central), and there's a free parking lot. There's **no cable TV and no wired (LAN) internet**, so never list them.

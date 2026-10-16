@@ -4,12 +4,12 @@ import type { Room } from "@/lib/rooms";
 import type { Dict } from "@/lib/dictionaries/en";
 import { Icon } from "./Icon";
 
-export function RoomCard({ room, href, t }: { room: Room; href: string; t: Dict }) {
+export function RoomCard({ room, href, t, className = "" }: { room: Room; href: string; t: Dict; className?: string }) {
   const copy = t.rooms[room.slug];
   return (
     <Link
       href={href}
-      className="group flex flex-col bg-surface-white rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm hover:shadow-lg transition-shadow"
+      className={`group flex flex-col bg-surface-white rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm hover:shadow-lg transition-shadow ${className}`.trim()}
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image

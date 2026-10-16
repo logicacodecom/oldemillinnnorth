@@ -3,6 +3,7 @@ import Image from "next/image";
 import { property, addressLine, directionsUrl, southLocation } from "@/lib/property";
 import { getDict, localePath, type Lang } from "@/lib/i18n";
 import { EVENTS } from "@/lib/analytics";
+import { bookingUrl } from "@/lib/booking";
 import { Icon } from "./Icon";
 
 export function Footer({ lang }: { lang: Lang }) {
@@ -84,13 +85,14 @@ export function Footer({ lang }: { lang: Lang }) {
           </h2>
           <ul className="space-y-3">
             <li>
-              <Link
+              <a
                 className="text-secondary-fixed-dim hover:text-surface-white transition-colors"
-                href={localePath(lang, "/rooms")}
+                href={bookingUrl()}
+                rel="noopener"
                 data-analytics-event={EVENTS.bookingClick}
               >
                 {t.common.bookOnline}
-              </Link>
+              </a>
             </li>
             <li>
               <a

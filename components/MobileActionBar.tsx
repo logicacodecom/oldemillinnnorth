@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { property, directionsUrl } from "@/lib/property";
 import { EVENTS } from "@/lib/analytics";
-import { getDict, localePath, type Lang } from "@/lib/i18n";
+import { bookingUrl } from "@/lib/booking";
+import { getDict, type Lang } from "@/lib/i18n";
 import { Icon } from "./Icon";
 
 // Compact one-handed action bar, mobile only. Fixed to the bottom, with
@@ -34,14 +34,15 @@ export function MobileActionBar({ lang }: { lang: Lang }) {
           <Icon name="explore" />
           <span className="font-label-md text-label-md">{t.directions}</span>
         </a>
-        <Link
+        <a
           className="flex flex-col items-center justify-center gap-0.5 bg-primary text-on-primary rounded-full px-6 min-h-[48px] justify-center active:scale-95 transition-transform"
-          href={localePath(lang, "/rooms")}
+          href={bookingUrl()}
+          rel="noopener"
           data-analytics-event={EVENTS.bookingClick}
         >
           <Icon name="calendar_month" />
           <span className="font-label-md text-label-md">{t.book}</span>
-        </Link>
+        </a>
       </div>
     </nav>
   );

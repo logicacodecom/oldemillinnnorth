@@ -8,6 +8,7 @@ import { property } from "@/lib/property";
 import { basePath, localePath, type Lang } from "@/lib/i18n";
 import type { Dict } from "@/lib/dictionaries/en";
 import { EVENTS } from "@/lib/analytics";
+import { bookingUrl } from "@/lib/booking";
 import { Icon } from "./Icon";
 import { LanguageToggle } from "./LanguageToggle";
 
@@ -106,8 +107,9 @@ export function Header({
             toggle={toggle}
             className={`font-label-lg text-label-lg hover:text-sunset-accent ${light ? "text-surface-white" : "text-on-surface"}`}
           />
-          <Link
-            href={localePath(lang, "/rooms")}
+          <a
+            href={bookingUrl()}
+            rel="noopener"
             data-analytics-event={EVENTS.bookingClick}
             className={`px-6 py-2.5 rounded-full font-label-lg text-label-lg transition-colors active:scale-95 ${
               light
@@ -116,7 +118,7 @@ export function Header({
             }`}
           >
             {common.bookOnline}
-          </Link>
+          </a>
         </nav>
 
         <div className="xl:hidden flex items-center gap-1">
@@ -161,14 +163,15 @@ export function Header({
             toggle={toggle}
             className="font-headline-md text-headline-md text-on-surface py-4 border-b border-outline-variant/30"
           />
-          <Link
-            href={localePath(lang, "/rooms")}
+          <a
+            href={bookingUrl()}
+            rel="noopener"
             onClick={() => setMenuOpen(false)}
             data-analytics-event={EVENTS.bookingClick}
             className="mt-6 text-center bg-primary text-on-primary px-6 py-4 rounded-full font-label-lg text-label-lg"
           >
             {common.bookOnline}
-          </Link>
+          </a>
           <a
             href={property.phone.href}
             data-analytics-event={EVENTS.phoneClick}

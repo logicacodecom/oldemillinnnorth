@@ -27,6 +27,7 @@ type Props = {
   variant?: Variant;
   size?: Size;
   external?: boolean;
+  sameTab?: boolean; // external http link that opens in this tab (Cloudbeds booking)
   icon?: string;
   analyticsEvent?: string;
   className?: string;
@@ -42,6 +43,7 @@ export function CTA({
   variant = "primary",
   size = "md",
   external,
+  sameTab,
   icon,
   analyticsEvent,
   className = "",
@@ -63,7 +65,7 @@ export function CTA({
         className={cls}
         aria-label={ariaLabel}
         data-analytics-event={analyticsEvent}
-        {...(isHttp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        {...(isHttp ? (sameTab ? { rel: "noopener" } : { target: "_blank", rel: "noopener noreferrer" }) : {})}
       >
         {inner}
       </a>

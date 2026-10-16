@@ -65,7 +65,6 @@ export type Room = {
   sleeps: number;
   bathrooms: number;
   sqft: number;
-  bookingUrl: string; // public Vacasa listing (Evolve's booking channel)
   amenities: AmenityKey[];
 };
 
@@ -80,7 +79,6 @@ export const rooms: Room[] = [
     sleeps: 2,
     bathrooms: 1,
     sqft: 250,
-    bookingUrl: "https://www.vacasa.com/unit/1032729",
     amenities: [...commonAmenities],
   },
   {
@@ -91,7 +89,6 @@ export const rooms: Room[] = [
     sleeps: 2,
     bathrooms: 1,
     sqft: 250,
-    bookingUrl: "https://www.vacasa.com/unit/1032583",
     amenities: [...commonAmenities, "iron", "shampoo", "dishware", "toaster", "smokeDetector"],
   },
   {
@@ -102,7 +99,6 @@ export const rooms: Room[] = [
     sleeps: 2,
     bathrooms: 1,
     sqft: 250,
-    bookingUrl: "https://www.vacasa.com/unit/1032728",
     amenities: [
       ...commonAmenities, "iron", "shampoo", "dishware", "smokeDetector", "shower",
       "cookingBasics", "refrigerator", "patio",
@@ -116,7 +112,6 @@ export const rooms: Room[] = [
     sleeps: 2,
     bathrooms: 1,
     sqft: 250,
-    bookingUrl: "https://www.vacasa.com/unit/1032259",
     amenities: [
       ...commonAmenities, "iron", "shampoo", "dishware", "toaster", "smokeDetector", "shower",
       "cookingBasics", "books",
