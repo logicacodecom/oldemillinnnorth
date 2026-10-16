@@ -222,7 +222,7 @@ export const en = {
 
   roomPage: {
     bookTitle: "Book this studio",
-    bookText: "Check live availability and rates and book securely online through Vacasa, our booking partner.",
+    bookText: "Check live availability and rates and book directly with us through our secure Cloudbeds booking system.",
     extendedNote: "Staying longer? Call us for extended-stay pricing.",
     photosTitle: "Photos",
     otherStudios: "Other studios",
@@ -274,7 +274,7 @@ export const en = {
   faqs: [
     {
       q: "How do I book a nightly stay?",
-      a: "Choose a studio on our Studios page and book it online through Vacasa, our booking partner. Stays start at one night.",
+      a: "Choose a studio on our Studios page and book it directly with us online through our secure Cloudbeds booking system. Stays start at one night.",
     },
     {
       q: "How do extended stays work?",
@@ -437,7 +437,7 @@ export const en = {
       {
         h: "Third-party services",
         ps: [
-          "Online bookings are completed on Vacasa, our booking partner; details you enter there are governed by their terms and privacy practices. Map and directions links open Google Maps. Links to our sister property open its own website, which has its own privacy practices.",
+          "Online bookings are handled by our booking provider (Cloudbeds) on their secure system; details you enter there are governed by their terms and privacy practices. Map and directions links open Google Maps. Links to our sister property open its own website, which has its own privacy practices.",
         ],
       },
     ],

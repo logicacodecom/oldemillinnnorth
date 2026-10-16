@@ -221,7 +221,7 @@ export const es: Dict = {
 
   roomPage: {
     bookTitle: "Reserve este estudio",
-    bookText: "Consulte disponibilidad y tarifas en tiempo real y reserve de forma segura en línea a través de Vacasa, nuestro socio de reservas.",
+    bookText: "Consulte disponibilidad y tarifas en tiempo real y reserve directamente con nosotros a través de nuestro sistema de reservas seguro de Cloudbeds.",
     extendedNote: "¿Se queda más tiempo? Llámenos para precios de estadías prolongadas.",
     photosTitle: "Fotos",
     otherStudios: "Otros estudios",
@@ -273,7 +273,7 @@ export const es: Dict = {
   faqs: [
     {
       q: "¿Cómo reservo una estadía por noche?",
-      a: "Elija un estudio en nuestra página de Estudios y resérvelo en línea a través de Vacasa, nuestro socio de reservas. Las estadías son a partir de una noche.",
+      a: "Elija un estudio en nuestra página de Estudios y resérvelo directamente con nosotros en línea a través de nuestro sistema de reservas seguro de Cloudbeds. Las estadías son a partir de una noche.",
     },
     {
       q: "¿Cómo funcionan las estadías prolongadas?",
@@ -434,7 +434,7 @@ export const es: Dict = {
       {
         h: "Servicios de terceros",
         ps: [
-          "Las reservas en línea se completan en Vacasa, nuestro socio de reservas; los datos que ingrese allí se rigen por sus términos y prácticas de privacidad. Los enlaces de mapas e indicaciones abren Google Maps. Los enlaces a nuestro hotel hermano abren su propio sitio web, que tiene sus propias prácticas de privacidad.",
+          "Las reservas en línea se gestionan en el sistema seguro de nuestro proveedor de reservas (Cloudbeds); los datos que ingrese allí se rigen por sus términos y prácticas de privacidad. Los enlaces de mapas e indicaciones abren Google Maps. Los enlaces a nuestro hotel hermano abren su propio sitio web, que tiene sus propias prácticas de privacidad.",
         ],
       },
     ],
