@@ -88,7 +88,8 @@ export function Footer({ lang }: { lang: Lang }) {
               <a
                 className="text-secondary-fixed-dim hover:text-surface-white transition-colors"
                 href={bookingUrl()}
-                rel="noopener"
+                target="_blank"
+                rel="noopener noreferrer"
                 data-analytics-event={EVENTS.bookingClick}
               >
                 {t.common.bookOnline}

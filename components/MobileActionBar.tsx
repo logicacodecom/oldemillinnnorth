@@ -37,7 +37,8 @@ export function MobileActionBar({ lang }: { lang: Lang }) {
         <a
           className="flex flex-col items-center justify-center gap-0.5 bg-primary text-on-primary rounded-full px-6 min-h-[48px] justify-center active:scale-95 transition-transform"
           href={bookingUrl()}
-          rel="noopener"
+          target="_blank"
+          rel="noopener noreferrer"
           data-analytics-event={EVENTS.bookingClick}
         >
           <Icon name="calendar_month" />

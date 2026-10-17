@@ -1,9 +1,10 @@
 import { property, siteUrl } from "@/lib/property";
 import { commonAmenities } from "@/lib/rooms";
+import { bookingUrl } from "@/lib/booking";
 import { en } from "@/lib/dictionaries/en";
 
 // Accurate JSON-LD from the owner's listings sheet. No aggregateRating,
-// reviews, star rating or prices.
+// reviews, star rating or prices. ReserveAction points at Cloudbeds (as South).
 export function lodgingJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -28,6 +29,10 @@ export function lodgingJsonLd() {
     checkinTime: property.checkInTime24,
     checkoutTime: property.checkOutTime24,
     availableLanguage: ["English", "Spanish"],
+    potentialAction: {
+      "@type": "ReserveAction",
+      target: bookingUrl(),
+    },
     description:
       "Independent studios on Dixie Highway in Clarkston, Michigan, about a mile from The Village and five miles from Pine Knob.",
     amenityFeature: commonAmenities.map((k) => ({

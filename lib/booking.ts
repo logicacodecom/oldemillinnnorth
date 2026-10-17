@@ -1,7 +1,7 @@
 import type { Room } from "./rooms";
 
 // Cloudbeds booking engine for North (property 321279). Every booking button
-// on the site links here; there is no widget or iframe (same pattern as South).
+// on the site links here (same pattern as South).
 export const CLOUDBEDS_BOOKING_BASE = "https://hotels.cloudbeds.com/en/reservation/v9FbEe";
 export const CLOUDBEDS_CURRENCY = "usd";
 export const CLOUDBEDS_BOOKING_URL = `${CLOUDBEDS_BOOKING_BASE}?currency=${CLOUDBEDS_CURRENCY}`;
@@ -21,12 +21,14 @@ export function bookingUrl(opts?: {
   checkin?: string;
   checkout?: string;
   adults?: number;
+  roomTypeID?: string; // when the room type comes from Cloudbeds itself
 }): string {
   const params = new URLSearchParams();
   if (opts?.checkin) params.set("checkin", opts.checkin);
   if (opts?.checkout) params.set("checkout", opts.checkout);
   if (opts?.adults) params.set("adults", String(opts.adults));
-  if (opts?.slug) params.set("room_type_id", cloudbedsRoomTypeIds[opts.slug]);
+  const roomTypeID = opts?.slug ? cloudbedsRoomTypeIds[opts.slug] : opts?.roomTypeID;
+  if (roomTypeID) params.set("room_type_id", roomTypeID);
   const qs = params.toString();
   return qs ? `${CLOUDBEDS_BOOKING_URL}&${qs}` : CLOUDBEDS_BOOKING_URL;
 }

@@ -23,6 +23,9 @@ export const property = {
   // Policies from the owner's Evolve listings sheet (Guest Info tab).
   checkIn: "3:00 PM",
   checkOut: "11:00 AM",
+  // IANA timezone of the property. Used to evaluate "today" for same-day
+  // bookings so late-evening local check-ins aren't rejected by a UTC server.
+  timezone: "America/Detroit",
   checkInTime24: "15:00",
   checkOutTime24: "11:00",
   parkingSpaces: 2,

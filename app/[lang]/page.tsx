@@ -3,7 +3,7 @@ import Image from "next/image";
 import { CTA } from "@/components/CTA";
 import { Icon } from "@/components/Icon";
 import { AmenityGrid } from "@/components/AmenityGrid";
-import { AvailabilityForm } from "@/components/AvailabilityForm";
+import { AvailabilityWidget } from "@/components/AvailabilityWidget";
 import { RoomCard } from "@/components/RoomCard";
 import { rooms, includedEverywhere } from "@/lib/rooms";
 import { featured } from "@/lib/photos";
@@ -43,7 +43,7 @@ export default function HomePage({ params }: Props) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <CTA
               href={bookingUrl()}
-              sameTab
+              external
               size="lg"
               className="bg-sunset-accent text-primary hover:bg-surface-white"
               analyticsEvent={EVENTS.bookingClick}
@@ -57,7 +57,7 @@ export default function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Check availability: overlaps the hero on desktop, sits below it on mobile */}
+      {/* Live availability & rates: overlaps the hero on desktop, sits below it on mobile */}
       <section
         id="availability"
         className="relative z-20 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop pt-10 md:pt-0 md:-mt-24 md:mb-16 scroll-mt-24"
@@ -65,7 +65,7 @@ export default function HomePage({ params }: Props) {
         <h2 className="font-headline-lg text-headline-lg text-primary text-center mb-6 md:hidden">
           {t.availability.title}
         </h2>
-        <AvailabilityForm t={t.availability} maxGuests={Math.max(...rooms.map((r) => r.sleeps))} />
+        <AvailabilityWidget lang={lang} t={t.availability} roomNames={t.rooms} maxGuests={Math.max(...rooms.map((r) => r.sleeps))} />
       </section>
 
       {/* Trust strip */}
@@ -239,7 +239,7 @@ export default function HomePage({ params }: Props) {
         <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center">
           <h2 className="font-headline-lg text-headline-lg text-primary mb-8">{h.finalTitle}</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CTA href={bookingUrl()} sameTab size="lg" analyticsEvent={EVENTS.bookingClick}>
+            <CTA href={bookingUrl()} external size="lg" analyticsEvent={EVENTS.bookingClick}>
               {t.common.bookOnline}
             </CTA>
             <CTA href={property.phone.href} variant="outline" size="lg" icon="call" analyticsEvent={EVENTS.phoneClick}>

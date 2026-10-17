@@ -109,7 +109,8 @@ export function Header({
           />
           <a
             href={bookingUrl()}
-            rel="noopener"
+            target="_blank"
+            rel="noopener noreferrer"
             data-analytics-event={EVENTS.bookingClick}
             className={`px-6 py-2.5 rounded-full font-label-lg text-label-lg transition-colors active:scale-95 ${
               light
@@ -165,7 +166,8 @@ export function Header({
           />
           <a
             href={bookingUrl()}
-            rel="noopener"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
             data-analytics-event={EVENTS.bookingClick}
             className="mt-6 text-center bg-primary text-on-primary px-6 py-4 rounded-full font-label-lg text-label-lg"
