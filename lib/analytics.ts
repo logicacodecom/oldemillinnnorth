@@ -9,6 +9,7 @@ export const EVENTS = {
   directionsClick: "directions_click",
   southSiteClick: "south_site_click",
   contactFormSubmit: "contact_form_submit",
+  careersFormSubmit: "careers_form_submit",
   emailClick: "email_click",
 } as const;
 

@@ -18,4 +18,5 @@ Sheet data worth a second look (the site shows only what the sheet marks):
 
 Still needed:
 - [ ] **Inquiry delivery:** set `RESEND_API_KEY` (and `CONTACT_TO`) on Vercel.
+- [ ] **Careers page (`/careers`):** applications (with an optional PDF/Word résumé up to 4 MB) are emailed to ClarkstonHotel@gmail.com through the same Resend setup. Until a sending domain is verified in Resend, set `CAREERS_TO` to the Resend account's own address, or applications will fail with a clear on-page error. Confirm the three openings (Housekeeping, Front Desk, Maintenance), their one-line descriptions and the equal-opportunity statement. No pay or hours are shown.
 - [ ] **Social profiles / Google Business listing** for North.
