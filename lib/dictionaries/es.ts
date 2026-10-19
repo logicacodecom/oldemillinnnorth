@@ -48,6 +48,11 @@ export const es: Dict = {
       title: "Accesibilidad",
       description: "El compromiso de Olde Mill Inn of Clarkston North con un sitio web accesible.",
     },
+    careers: {
+      title: "Empleos",
+      description:
+        "Únase al equipo de The Olde Mill Inn of Clarkston North. Buscamos personal de limpieza, recepción y mantenimiento. Postúlese en línea.",
+    },
   },
 
   nav: {
@@ -90,6 +95,7 @@ export const es: Dict = {
     contact: "Contacto",
     plan: "Planifique",
     southLink: `Frente al lago: ${southLocation.short}`,
+    careers: "Empleos",
     credit: "Sitio web desarrollado por nuestro socio tecnológico,",
   },
 
@@ -458,12 +464,16 @@ export const es: Dict = {
         h: "Información que recopilamos",
         ps: [
           "Si usa nuestro formulario de contacto, recopilamos los datos que nos proporciona, como su nombre, correo electrónico, teléfono (opcional), fechas de llegada y salida (opcionales) y su mensaje, para poder responder a su consulta.",
+          "Si se postula a un empleo en nuestra página de empleos, recopilamos los datos que nos proporciona: su nombre, correo electrónico, teléfono, el puesto que le interesa, su disponibilidad, su mensaje y el currículum que adjunte. Su solicitud se envía por correo electrónico a nuestro equipo de contratación; el sitio web no guarda una copia.",
           "Como la mayoría de los sitios web, podemos recopilar información técnica y de uso limitada (como las páginas visitadas) para entender cómo se usa el sitio y mejorarlo. Esto solo está activo si se ha configurado un servicio de analítica.",
         ],
       },
       {
         h: "Cómo usamos la información",
-        ps: ["Usamos la información que nos envía para responder a sus preguntas y ayudarle a organizar su estadía. No vendemos su información personal."],
+        ps: [
+          "Usamos la información que nos envía para responder a sus preguntas y ayudarle a organizar su estadía. No vendemos su información personal.",
+          "Usamos las solicitudes de empleo únicamente para considerarle para trabajar con nosotros y comunicarnos con usted al respecto.",
+        ],
       },
       {
         h: "Servicios de terceros",
@@ -475,6 +485,55 @@ export const es: Dict = {
     contactTitle: "Contacto",
     contactPrefix: "¿Preguntas sobre esta declaración? Escríbanos a",
     or: "o llame al",
+  },
+
+  careers: {
+    eyebrow: "Empleos",
+    title: "Trabaje con nosotros",
+    heroAlt: "El vestíbulo de The Olde Mill Inn of Clarkston North",
+    intro:
+      "Somos un pequeño hotel independiente en Clarkston, Michigan, y buscamos personas responsables que nos ayuden a atender a nuestros huéspedes. Revise nuestros puestos disponibles y postúlese a continuación. Si su perfil se ajusta, nos comunicaremos con usted.",
+    openingsTitle: "Puestos disponibles",
+    positions: {
+      housekeeping: {
+        title: "Limpieza",
+        summary: "Limpiar y preparar los estudios entre huéspedes, incluidos la ropa de cama, los baños y las cocinetas.",
+      },
+      frontDesk: {
+        title: "Recepción",
+        summary: "Recibir a los huéspedes, gestionar el check-in y el check-out, atender el teléfono y ayudar con las reservaciones.",
+      },
+      maintenance: {
+        title: "Mantenimiento",
+        summary: "Mantener en buen estado los estudios, el edificio y los terrenos, desde reparaciones menores hasta el cuidado de cada temporada.",
+      },
+    },
+    applyLink: "Postúlese ahora",
+    formTitle: "Postúlese en línea",
+    eeo: `${property.name} es un empleador que ofrece igualdad de oportunidades. Consideramos a todos los solicitantes sin distinción de raza, color, religión, sexo, origen nacional, edad, discapacidad ni cualquier otra condición protegida por la ley.`,
+  },
+  careersForm: {
+    intro: "Cuéntenos un poco sobre usted. Puede adjuntar su currículum, pero no es obligatorio.",
+    name: "Nombre",
+    email: "Correo electrónico",
+    phone: "Teléfono",
+    position: "Puesto",
+    positionPlaceholder: "Seleccione un puesto",
+    general: "Solicitud general",
+    availability: "Disponibilidad (opcional)",
+    availabilityHint: "Días, horarios y fecha de inicio",
+    message: "Sobre usted (opcional)",
+    resume: "Currículum (opcional)",
+    resumeHint: "Documento PDF o Word, de hasta 4 MB.",
+    resumeWrongType: "Adjunte un documento PDF o Word (.pdf, .doc o .docx).",
+    resumeTooLarge: "El archivo pesa más de 4 MB. Adjunte un archivo más pequeño.",
+    consent: "Al enviar, acepta que usemos los datos anteriores para considerar su solicitud y comunicarnos con usted al respecto. No vendemos su información.",
+    errorPrefix: "Lo sentimos, no pudimos enviar su solicitud en este momento. Envíe su currículum por correo electrónico a",
+    errorOr: "o llame al",
+    sending: "Enviando…",
+    submit: "Enviar solicitud",
+    successTitle: "Gracias, su solicitud fue enviada.",
+    successText: "Revisamos todas las solicitudes y nos comunicaremos con usted si su perfil se ajusta.",
   },
 
   accessibility: {

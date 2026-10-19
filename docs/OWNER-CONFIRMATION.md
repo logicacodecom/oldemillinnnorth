@@ -17,5 +17,6 @@ Sheet data worth a second look (the site shows only what the sheet marks):
 - [ ] **Recent reviews** mention a missing smoke alarm and deadbolts and smoke odor. This is a property issue to fix, not a website item.
 
 Still needed:
-- [ ] **Inquiry delivery:** set `RESEND_API_KEY` (and `CONTACT_TO`) on Vercel.
+- [ ] **Form email delivery (inquiries and job applications):** on the Gmail account that sends them (e.g. ClarkstonHotel@gmail.com), turn on 2-Step Verification, create an app password (Google Account → Security → App passwords), then set `GMAIL_USER` and `GMAIL_APP_PASSWORD` on Vercel and redeploy.
+- [ ] **Careers page (`/careers`):** applications (with an optional PDF/Word résumé up to 4 MB) are emailed to ClarkstonHotel@gmail.com through the same Gmail setup (`CAREERS_TO` overrides the recipient). Until it's set, the form shows a clear error instead of dropping applications. Confirm the three openings (Housekeeping, Front Desk, Maintenance), their one-line descriptions and the equal-opportunity statement. No pay or hours are shown.
 - [ ] **Social profiles / Google Business listing** for North.

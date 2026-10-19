@@ -55,7 +55,9 @@ in components.
 | Variable | Purpose |
 |---|---|
 | `NEXT_PUBLIC_PROPERTY_EMAIL` | Override the public email |
-| `RESEND_API_KEY` / `RESEND_FROM` / `CONTACT_TO` | Deliver inquiry-form emails via Resend |
+| `GMAIL_USER` / `GMAIL_APP_PASSWORD` | Send inquiry and job-application emails through Gmail (a Google app password, not the account password; see `lib/mail.ts`) |
+| `CONTACT_TO` | Override the recipient of inquiries (default: the property email) |
+| `CAREERS_TO` | Override the recipient of job applications (default ClarkstonHotel@gmail.com, in `lib/careers.ts`) |
 | `CONTACT_WEBHOOK_URL` | Fallback destination for inquiries (without either, the form shows an error and tells the guest to call) |
 | `NEXT_PUBLIC_GA_ID` | Analytics |
 

@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { property } from "@/lib/property";
+import { gmailConfigured, sendGmail } from "@/lib/mail";
 
 // Contact handler: never accepts-and-drops a message.
-// Delivery order: Resend email (RESEND_API_KEY) → webhook (CONTACT_WEBHOOK_URL)
+// Delivery order: Gmail (GMAIL_USER + GMAIL_APP_PASSWORD) → webhook (CONTACT_WEBHOOK_URL)
 // → 501 so the form shows a clear error and directs the guest to call/text.
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
@@ -23,12 +24,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
   }
 
-  const resendKey = process.env.RESEND_API_KEY;
   const webhook = process.env.CONTACT_WEBHOOK_URL;
 
-  // Preferred: send an email via Resend.
-  if (resendKey) {
-    const from = process.env.RESEND_FROM || "Olde Mill Inn North Website <onboarding@resend.dev>";
+  // Preferred: email it through Gmail.
+  if (gmailConfigured()) {
     const text = [
       "New inquiry from oldemillinnnorth.com",
       "",
@@ -45,20 +44,16 @@ export async function POST(request: Request) {
       .filter(Boolean)
       .join("\n");
     try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          from,
-          // CONTACT_TO overrides the recipient (used while the sending domain is
-          // still being verified in Resend). Falls back to the property email.
-          to: [process.env.CONTACT_TO || property.email],
-          reply_to: email,
+      await sendGmail(
+        {
+          // CONTACT_TO overrides the recipient; it falls back to the property email.
+          to: process.env.CONTACT_TO || property.email,
+          replyTo: email,
           subject: `North website inquiry${spanish ? " (Español)" : ""} — ${name}`,
           text,
-        }),
-      });
-      if (!res.ok) throw new Error(`Resend ${res.status}`);
+        },
+        "Olde Mill Inn North Website"
+      );
       return NextResponse.json({ ok: true });
     } catch {
       return NextResponse.json({ error: "Could not deliver message." }, { status: 502 });
