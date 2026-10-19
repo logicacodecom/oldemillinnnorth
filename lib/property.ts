@@ -20,6 +20,8 @@ export const property = {
     href: "tel:+12486251522",
   },
   email: process.env.NEXT_PUBLIC_PROPERTY_EMAIL ?? "ClarkstonHotel@gmail.com",
+  // Inbox that receives contact-form messages (shared with South).
+  inquiryEmail: "ClarkstonHotel@gmail.com",
   // Policies from the owner's Evolve listings sheet (Guest Info tab).
   checkIn: "3:00 PM",
   checkOut: "11:00 AM",

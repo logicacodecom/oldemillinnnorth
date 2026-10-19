@@ -56,8 +56,7 @@ in components.
 |---|---|
 | `NEXT_PUBLIC_PROPERTY_EMAIL` | Override the public email |
 | `GMAIL_USER` / `GMAIL_APP_PASSWORD` | Send inquiry and job-application emails through Gmail (a Google app password, not the account password; see `lib/mail.ts`) |
-| `CONTACT_TO` | Override the recipient of inquiries (default: the property email) |
-| `CAREERS_TO` | Override the recipient of job applications (default ClarkstonHotel@gmail.com, in `lib/careers.ts`) |
+| — | Form recipients are fixed in code: inquiries go to `property.inquiryEmail`, job applications to `careersEmail` (`lib/careers.ts`), both ClarkstonHotel@gmail.com |
 | `CONTACT_WEBHOOK_URL` | Fallback destination for inquiries (without either, the form shows an error and tells the guest to call) |
 | `NEXT_PUBLIC_GA_ID` | Analytics |
 
