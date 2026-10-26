@@ -95,6 +95,7 @@ export const es: Dict = {
     contact: "Contacto",
     plan: "Planifique",
     southLink: `Frente al lago: ${southLocation.short}`,
+    southEvents: `Eventos y celebraciones: ${southLocation.short}`,
     careers: "Empleos",
     credit: "Sitio web desarrollado por nuestro socio tecnológico,",
   },

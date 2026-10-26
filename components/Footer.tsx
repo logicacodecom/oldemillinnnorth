@@ -107,6 +107,18 @@ export function Footer({ lang }: { lang: Lang }) {
               </a>
             </li>
             <li>
+              {/* North doesn't host events; point celebrations to South's tour page. */}
+              <a
+                className="inline-flex items-center gap-1 text-secondary-fixed-dim hover:text-surface-white transition-colors"
+                href={`${southLocation.url}${lang === "es" ? "es/" : ""}book-a-tour`}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-analytics-event={EVENTS.southSiteClick}
+              >
+                {t.footer.southEvents} <Icon name="open_in_new" className="text-sm" />
+              </a>
+            </li>
+            <li>
               <a
                 className="inline-flex items-center gap-1 text-secondary-fixed-dim hover:text-surface-white transition-colors"
                 href={directionsUrl}

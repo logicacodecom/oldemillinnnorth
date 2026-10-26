@@ -96,6 +96,7 @@ export const en = {
     contact: "Contact",
     plan: "Plan",
     southLink: `Lakefront stays: ${southLocation.short}`,
+    southEvents: `Events & celebrations: ${southLocation.short}`,
     careers: "Careers",
     credit: "Website delivered by our technology partner,",
   },
