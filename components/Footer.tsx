@@ -107,7 +107,7 @@ export function Footer({ lang }: { lang: Lang }) {
               </a>
             </li>
             <li>
-              {/* North doesn't host events; point celebrations to South's tour page. */}
+              {/* North doesn't host events; point celebrations to South's events page. */}
               <a
                 className="inline-flex items-center gap-1 text-secondary-fixed-dim hover:text-surface-white transition-colors"
                 href={`${southLocation.url}${lang === "es" ? "es/" : ""}celebrate`}
