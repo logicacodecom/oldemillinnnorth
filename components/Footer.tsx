@@ -110,7 +110,7 @@ export function Footer({ lang }: { lang: Lang }) {
               {/* North doesn't host events; point celebrations to South's tour page. */}
               <a
                 className="inline-flex items-center gap-1 text-secondary-fixed-dim hover:text-surface-white transition-colors"
-                href={`${southLocation.url}${lang === "es" ? "es/" : ""}book-a-tour`}
+                href={`${southLocation.url}${lang === "es" ? "es/" : ""}celebrate`}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-analytics-event={EVENTS.southSiteClick}
